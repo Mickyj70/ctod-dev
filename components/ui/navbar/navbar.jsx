@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { IoChevronDownOutline } from "react-icons/io5";
 import { TiStarOutline } from "react-icons/ti";
+import { ChevronRight } from "lucide-react";
 
 export const Navbar = ({ amount = 120000 }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -82,19 +83,26 @@ export const Navbar = ({ amount = 120000 }) => {
 
                         {isDropdownOpen && (
                             <div className="absolute top-[80px] right-0 w-full bg-sidebar h-screen  rounded-md shadow-md p-4">
-                                <p className="font-bold text-white">My Account</p>
+                                <div className="flex w-full py-12 items-center justify-between">
+                                    <p className="font-bold text-white text-2xl">My Account</p>
+                                    <p className="text-primaryText text-xl">x</p>
+                                </div>
                                 <ul className="mt-2">
-                                    <li className="py-2 border-b border-bordercolor">
+                                    <li className="py-6 border-b border-bordercolor text-lg font-bold flex items-center justify-between uppercase">
                                         <Link href="/settings">Settings</Link>
+                                        <ChevronRight size={30} />
                                     </li>
-                                    <li className="py-2 border-b border-bordercolor">
+                                    <li className="py-6 border-b border-bordercolor text-lg font-bold  flex items-center justify-between uppercase" >
                                         <Link href="/governance">Governance</Link>
+                                        <ChevronRight size={30} />
                                     </li>
-                                    <li className="py-2 border-b border-bordercolor">
-                                        <p>Referral Program (Soon)</p>
+                                    <li className="py-6 border-b border-bordercolor text-[#646470] text-lg font-bold  flex items-center justify-between uppercase" >
+                                        <p className="relative">Referral Program <span className="absolute ml-2 -top-3 text-[10px] border border-[#646470] rounded-md px-1">Soon</span></p>
+                                        <ChevronRight size={30} />
                                     </li>
-                                    <li className="py-2 text-red-500">
+                                    <li className="py-6 border-b border-bordercolor text-negative text-lg font-bold flex items-center justify-between uppercase" >
                                         <Link href="/logout">Logout</Link>
+                                        <ChevronRight color="white" size={30} />
                                     </li>
                                 </ul>
                             </div>

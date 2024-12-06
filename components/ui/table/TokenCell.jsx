@@ -29,9 +29,9 @@ export function TokenCell({ token, isFavorite, onFavoriteToggle }) {
                     </div>
 
                     <div className="flex items-center gap-x-2 text-xs">
-                        <p>web</p>
-                        <p>x</p>
-                        <p>telegram</p>
+                        <span>web</span>
+                        <span>x</span>
+                        <span>telegram</span>
                     </div>
 
                 </div>

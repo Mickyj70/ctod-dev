@@ -43,13 +43,13 @@ export function Table({
                 <td key={colIndex} className="px-4 py-4">
                   {column.key === 'liquidity' ? (
                     <div className="flex items-center gap-x-2">
-                      <p>icon</p>
+                      <span>icon</span>
                       <span className="text-white font-bold">{item[column.key]}</span>
                       <span className="text-primaryText font-bold">/  {item.againstLiquuidity}</span>
                     </div>
                   ) : column.key === 'txns' ? (
                     <div className="">
-                      <p className="font-bold">{item[column.key]}</p>
+                      <span className="font-bold">{item[column.key]}</span>
                       <div className="flex items-center gap-x-2">
                         <span className="text-positive font-bold">{item[column.key]}</span> /
                         <span className=" text-negative font-bold">{item.againstTxns}</span>
@@ -58,12 +58,12 @@ export function Table({
                   ) : column.key === "created" ? (
                     <div className="flex items-center gap-x-2">
                       <Clock size={18} />
-                      <p className="font-bold">{item[column.key]}</p>
+                      <span className="font-bold">{item[column.key]}</span>
                     </div>
                   ) : column.render ? (
                     column.render(item)
                   ) : (
-                    <p className="font-bold">{item[column.key]}</p>
+                    <div className="font-bold">{item[column.key]}</div>
                   )}
                 </td>
               ))}
