@@ -66,7 +66,7 @@ export const Navbar = ({ amount = 120000 }) => {
       <div className="h-[130px]  border-b border-bordercolor">
         <div className="flex h-[95px] gap-x-4 border-b border-bordercolor items-center w-full">
           <div className="px-12">
-            <p className="text-4xl font-extrabold">CTO'D</p>
+            <p className="text-4xl font-extrabold">CTO&apos;D</p>
           </div>
           <div className="flex items-center h-full px-8 gap-x-16 border-x border-bordercolor">
             {data.map((item, index) =>
@@ -163,10 +163,9 @@ export const Navbar = ({ amount = 120000 }) => {
         </div>
         <div className="flex items-center gap-x-4 py-1 px-7 w-full h-[35px]">
           <p className="flex items-center h-full px-3 font-bold uppercase border-r gap-x-2 text-primaryText border-bordercolor">
-            {" "}
             <span>
               <TiStarOutline size={20} />
-            </span>{" "}
+            </span>
             Watching
           </p>
           <div className="flex items-center gap-x-4 ">

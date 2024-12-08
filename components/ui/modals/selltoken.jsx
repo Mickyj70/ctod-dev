@@ -74,12 +74,12 @@ export const CreateTokenModal = ({ isOpen, onClose }) => {
             />
           </div>
         </div>
-        //3RD SECTION with advanced setting button
+
         <div>
           <p>⚙️Advanced Settings </p>
           <IoIosArrowDown />
         </div>
-        //4TH SECTION with button and warning
+
         <button className="w-full py-3 font-bold text-white rounded-md bg-secondaryText hover:bg-secondaryText/90">
           Quick Sell
         </button>
