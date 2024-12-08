@@ -72,7 +72,7 @@ export const Navbar = ({ amount = 120000 }) => {
             {data.map((item, index) =>
               !item.isButton ? (
                 <Link href={item.path} key={index}>
-                  <p className="font-bold text-white uppercase cursor-pointer hover:text-white/40">
+                  <p className="text-xs font-bold text-white uppercase cursor-pointer hover:text-white/40">
                     {item.name}
                   </p>
                 </Link>
@@ -80,7 +80,7 @@ export const Navbar = ({ amount = 120000 }) => {
                 <p
                   key={index}
                   onClick={item.onClick}
-                  className="font-bold text-white uppercase cursor-pointer hover:text-white/40"
+                  className="text-xs font-bold text-white uppercase cursor-pointer hover:text-white/40"
                 >
                   {item.name}
                 </p>
