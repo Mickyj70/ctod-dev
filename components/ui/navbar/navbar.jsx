@@ -1,127 +1,196 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { IoChevronDownOutline } from "react-icons/io5";
 import { TiStarOutline } from "react-icons/ti";
 import { ChevronRight } from "lucide-react";
+import { CreateTokenModal } from "../modals/createtoken";
 
 export const Navbar = ({ amount = 120000 }) => {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isSearchDropdownOpen, setIsSearchDropdownOpen] = useState(false);
 
-    const toggleDropdown = () => {
-        setIsDropdownOpen((prev) => !prev);
+  const searchDropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        searchDropdownRef.current &&
+        !searchDropdownRef.current.contains(event.target)
+      ) {
+        setIsSearchDropdownOpen(false);
+      }
     };
 
-    const data = [
-        { name: "New Pairs", path: "/new-pairs" },
-        { name: "Trending", path: "/trending" },
-        { name: "Advance Mode", path: "/advance-mode" },
-        { name: "Holdings", path: "/holdings" },
-        { name: "Create Token", path: "/create-token" },
-    ];
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+  const toggleSearchDropdown = () => {
+    setIsSearchDropdownOpen((prev) => !prev);
+  };
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev);
+  };
 
-    const formatPrice = (price) => {
-        if (price >= 1000000) {
-            return (price / 1000000) + 'M';
-        } else if (price >= 1000) {
-            return (price / 1000) + 'k';
-        }
-        return price.toString();
-    };
+  const data = [
+    { name: "New Pairs", path: "/new-pairs" },
+    { name: "Trending", path: "/trending" },
+    { name: "Advance Mode", path: "/advance-mode" },
+    { name: "Holdings", path: "/holdings" },
+    {
+      name: "Create Token",
+      isButton: true,
+      onClick: () => setIsModalOpen(true),
+    },
+  ];
 
-    const coinData = [
-        { name: "BTC", price: formatPrice(100000) },
-        { name: "ETH", price: formatPrice(100000) },
-        { name: "SOL", price: formatPrice(100000) },
-        { name: "BNB", price: formatPrice(100000) },
-    ];
+  const formatPrice = (price) => {
+    if (price >= 1000000) {
+      return price / 1000000 + "M";
+    } else if (price >= 1000) {
+      return price / 1000 + "k";
+    }
+    return price.toString();
+  };
 
+  const coinData = [
+    { name: "BTC", price: formatPrice(100000) },
+    { name: "ETH", price: formatPrice(100000) },
+    { name: "SOL", price: formatPrice(100000) },
+    { name: "BNB", price: formatPrice(100000) },
+  ];
 
-
-    return (
-        <div className="h-[130px]  border-b border-bordercolor">
-            <div className="flex h-[95px] gap-x-4 border-b border-bordercolor items-center w-full">
-                <div className="px-12">
-                    <p className="font-extrabold text-4xl">CTO'D</p>
+  return (
+    <>
+      <div className="h-[130px]  border-b border-bordercolor">
+        <div className="flex h-[95px] gap-x-4 border-b border-bordercolor items-center w-full">
+          <div className="px-12">
+            <p className="text-4xl font-extrabold">CTO'D</p>
+          </div>
+          <div className="flex items-center h-full px-8 gap-x-16 border-x border-bordercolor">
+            {data.map((item, index) =>
+              !item.isButton ? (
+                <Link href={item.path} key={index}>
+                  <p className="font-bold text-white uppercase cursor-pointer hover:text-white/40">
+                    {item.name}
+                  </p>
+                </Link>
+              ) : (
+                <p
+                  key={index}
+                  onClick={item.onClick}
+                  className="font-bold text-white uppercase cursor-pointer hover:text-white/40"
+                >
+                  {item.name}
+                </p>
+              )
+            )}
+          </div>
+          <div className="flex items-center justify-between flex-1 h-full">
+            <div
+              className="relative flex items-center justify-center flex-1 w-full h-full px-3 py-2"
+              ref={searchDropdownRef}
+            >
+              <div
+                onClick={toggleSearchDropdown}
+                className="flex items-center w-full h-10 px-3 py-2 rounded-md cursor-pointer bg-sidebar gap-x-3"
+              >
+                <p>icon</p>
+                <input
+                  type="text"
+                  placeholder="SEARCH BY TOKEN OR LP CONTRACT"
+                  className="w-full h-full font-bold uppercase outline-none bg-sidebar placeholder:text-placeholderText"
+                  onClick={(e) => e.stopPropagation()}
+                />
+              </div>
+              {isSearchDropdownOpen && (
+                <div className="absolute h-[332px] w-[225px] left-0 z-50  mt-1 rounded-md shadow-lg top-full bg-sidebar">
+                  {/* Dropdown content here */}
+                  no messages
                 </div>
-                <div className="flex items-center gap-x-16 px-8 border-x h-full border-bordercolor">
-                    {data.map((item, index) => (
-                        <Link href={item.path} key={index}>
-                            <p className="uppercase font-bold text-white cursor-pointer hover:text-white/40">
-                                {item.name}
-                            </p>
-                        </Link>
-                    ))}
-                </div>
-                <div className="flex-1 flex h-full items-center justify-between">
-                    <div className="flex-1 flex items-center justify-center w-full h-full py-2 px-3">
-                        <div className="w-full h-12 bg-sidebar rounded-md py-2 px-3 flex items-center gap-x-3">
-                            <p>icon</p>
-                            <input
-                                type="text"
-                                placeholder="SEARCH BY TOKEN OR LP CONTRACT"
-                                className="bg-sidebar w-full h-full outline-none font-bold placeholder:text-placeholderText uppercase"
-                            />
-                        </div>
-                    </div>
-                    <div className="flex-1 flex relative items-center gap-x-3 justify-between px-6 w-full h-full bg-sidebar">
-                        <div className="flex items-center gap-x-4">
-                            <div className="w-12 h-12 bg-white rounded-full"></div>
-                            <div>
-                                <p className="font-bold text-xl">0x00000000</p>
-                                <p className="font-bold text-fadedText">
-                                    BALANCE <span>icon</span> <span>{formatPrice(amount)}</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div onClick={toggleDropdown} className="cursor-pointer">
-                            <IoChevronDownOutline size={35} />
-                        </div>
-
-
-                        {/* Dropdown */}
-
-                        {isDropdownOpen && (
-                            <div className="absolute top-[80px] right-0 w-full bg-sidebar h-screen  rounded-md shadow-md p-4">
-                                <div className="flex w-full py-12 items-center justify-between">
-                                    <p className="font-bold text-white text-2xl">My Account</p>
-                                    <p className="text-primaryText text-xl">x</p>
-                                </div>
-                                <ul className="mt-2">
-                                    <li className="py-6 border-b border-bordercolor text-lg font-bold flex items-center justify-between uppercase">
-                                        <Link href="/settings">Settings</Link>
-                                        <ChevronRight size={30} />
-                                    </li>
-                                    <li className="py-6 border-b border-bordercolor text-lg font-bold  flex items-center justify-between uppercase" >
-                                        <Link href="/governance">Governance</Link>
-                                        <ChevronRight size={30} />
-                                    </li>
-                                    <li className="py-6 border-b border-bordercolor text-[#646470] text-lg font-bold  flex items-center justify-between uppercase" >
-                                        <p className="relative">Referral Program <span className="absolute ml-2 -top-3 text-[10px] border border-[#646470] rounded-md px-1">Soon</span></p>
-                                        <ChevronRight size={30} />
-                                    </li>
-                                    <li className="py-6 border-b border-bordercolor text-negative text-lg font-bold flex items-center justify-between uppercase" >
-                                        <Link href="/logout">Logout</Link>
-                                        <ChevronRight color="white" size={30} />
-                                    </li>
-                                </ul>
-                            </div>
-                        )}
-                    </div>
-                </div>
+              )}
             </div>
-            <div className="flex items-center gap-x-4 py-1 px-7 w-full h-[35px]">
-                <p className="flex items-center gap-x-2 text-primaryText font-bold uppercase border-r border-bordercolor px-3 h-full"> <span><TiStarOutline size={20} /></span> Watching</p>
-                <div className="flex gap-x-4 items-center ">
-                    {coinData.map((item, index) => (
-                        <div key={index} className="flex items-center gap-x-2 border-r border-bordercolor  h-full px-6">
-                            <p key={index} className="font-bold text-secondaryText text-base">{item.name} <span className="text-primaryText">${item.price}</span></p>
-                        </div>
-                    ))}
+            <div className="relative flex items-center justify-between flex-1 w-full h-full px-6 gap-x-3 bg-sidebar">
+              <div className="flex items-center gap-x-4">
+                <div className="w-12 h-12 bg-white rounded-full"></div>
+                <div>
+                  <p className="text-xl font-bold">0x00000000</p>
+                  <p className="font-bold text-fadedText">
+                    BALANCE <span>icon</span> <span>{formatPrice(amount)}</span>
+                  </p>
                 </div>
+              </div>
+              <div onClick={toggleDropdown} className="cursor-pointer">
+                <IoChevronDownOutline size={35} />
+              </div>
+
+              {/* Dropdown */}
+
+              {isDropdownOpen && (
+                <div className="absolute top-[80px] right-0 w-full bg-sidebar h-screen  rounded-md shadow-md p-4">
+                  <div className="flex items-center justify-between w-full py-12">
+                    <p className="text-2xl font-bold text-white">My Account</p>
+                    <p className="text-xl text-primaryText">x</p>
+                  </div>
+                  <ul className="mt-2">
+                    <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor">
+                      <Link href="/settings">Settings</Link>
+                      <ChevronRight size={30} />
+                    </li>
+                    <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor">
+                      <Link href="/governance">Governance</Link>
+                      <ChevronRight size={30} />
+                    </li>
+                    <li className="py-6 border-b border-bordercolor text-[#646470] text-lg font-bold  flex items-center justify-between uppercase">
+                      <p className="relative">
+                        Referral Program{" "}
+                        <span className="absolute ml-2 -top-3 text-[10px] border border-[#646470] rounded-md px-1">
+                          Soon
+                        </span>
+                      </p>
+                      <ChevronRight size={30} />
+                    </li>
+                    <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor text-negative">
+                      <Link href="/logout">Logout</Link>
+                      <ChevronRight color="white" size={30} />
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
-
-
+          </div>
         </div>
-    );
+        <div className="flex items-center gap-x-4 py-1 px-7 w-full h-[35px]">
+          <p className="flex items-center h-full px-3 font-bold uppercase border-r gap-x-2 text-primaryText border-bordercolor">
+            {" "}
+            <span>
+              <TiStarOutline size={20} />
+            </span>{" "}
+            Watching
+          </p>
+          <div className="flex items-center gap-x-4 ">
+            {coinData.map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center h-full px-6 border-r gap-x-2 border-bordercolor"
+              >
+                <p
+                  key={index}
+                  className="text-base font-bold text-secondaryText"
+                >
+                  {item.name}{" "}
+                  <span className="text-primaryText">${item.price}</span>
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <CreateTokenModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
+  );
 };

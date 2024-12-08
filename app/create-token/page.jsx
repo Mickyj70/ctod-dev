@@ -1,10 +1,16 @@
+"use client";
+import { CreateTokenModal } from "../../components/ui/modals/createtoken";
+import { useState } from "react";
 
-import React from "react";
+export default function CreateTokenPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-export default function Page() {
   return (
-    <div>
-      <p>Create Token</p>
-    </div>
+    <>
+      <CreateTokenModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
   );
 }
