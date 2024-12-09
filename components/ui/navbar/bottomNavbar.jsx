@@ -3,7 +3,7 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { LuMessagesSquare } from "react-icons/lu";
 
-export default function BottomNavbar() {
+export const BottomNavbar = () => {
     return (
         <div className="w-full text-white flex justify-between items-center py-1 px-6 border-t border-bordercolor">
             {/* Left Section: Live Data Indicator */}

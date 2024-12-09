@@ -1,11 +1,12 @@
 "use client"
 import React from "react";
 import { RxMixerHorizontal } from "react-icons/rx";
-import { Table } from "@/components/ui/table/table";
+
 import { GoPerson } from "react-icons/go";
 import { BiTargetLock } from "react-icons/bi";
 import { Clock } from "lucide-react";
 import { RefreshCw } from "lucide-react";
+import { Table } from "../../components/ui/table/table"
 export default function Page() {
   const handleFavoriteToggle = ({ index, isFavorited }) => {
     console.log(`Token ${index} is ${isFavorited ? "favorited" : "unfavorited"}`);
@@ -23,20 +24,6 @@ export default function Page() {
 
   const columns = [
     { label: "Token Info", key: "token" },
-    // {
-    //   label: "Price",
-    //   key: "price",
-    //   render: (item) => `$${item.price.toLocaleString()}`
-    // },
-    // {
-    //   label: "24h Change",
-    //   key: "change",
-    //   render: (item) => (
-    //     <span className={item.change > 0 ? "text-green-500" : "text-red-500"}>
-    //       {item.change}%
-    //     </span>
-    //   )
-    // },
     {
       label: "INVESTED",
       key: "invested",
@@ -53,7 +40,6 @@ export default function Page() {
       label: "ACTION",
       key: "action",
     }
-
   ];
 
   const data = [

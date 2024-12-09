@@ -1,7 +1,10 @@
-import localFont from "next/font/local";
+
+import { Navbar } from "../components/ui/navbar/navbar";
 import "./globals.css";
-import { Navbar } from "@/components/ui/navbar/navbar";
-import BottomNavbar from "@/components/ui/navbar/bottomNavbar";
+import { BottomNavbar } from "../components/ui/navbar/bottomNavbar";
+
+
+
 
 
 // const geistSans = localFont({
