@@ -4,6 +4,7 @@ import Link from "next/link";
 import { IoChevronDownOutline } from "react-icons/io5";
 import { TiStarOutline } from "react-icons/ti";
 import { ChevronRight } from "lucide-react";
+import { CiSearch } from "react-icons/ci";
 import { CreateTokenModal } from "../modals/createtoken";
 
 export const Navbar = ({ amount = 120000 }) => {
@@ -96,11 +97,11 @@ export const Navbar = ({ amount = 120000 }) => {
                 onClick={toggleSearchDropdown}
                 className="flex items-center w-full h-10 px-3 py-2 rounded-md cursor-pointer bg-sidebar gap-x-3"
               >
-                <p>icon</p>
+                <CiSearch />
                 <input
                   type="text"
-                  placeholder="SEARCH BY TOKEN OR LP CONTRACT"
-                  className="w-full h-full font-bold uppercase outline-none bg-sidebar placeholder:text-placeholderText"
+                  placeholder="SEARCH "
+                  className="w-full h-full text-xs font-bold uppercase outline-none bg-sidebar placeholder:text-placeholderText"
                   onClick={(e) => e.stopPropagation()}
                 />
               </div>
