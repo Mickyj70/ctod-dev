@@ -56,21 +56,6 @@ export default function Page() {
       txns: 100,
       againstTxns: 200,
       volume: formatPrice(10000),
-      additional_info: [
-        {
-          t10: "4%",
-          dh: "10%",
-          person: 100,
-          target: 200,
-        }
-      ].map(info => (
-        <div className="flex items-center gap-x-2" key={info.t10}>
-          <p className="text-positive font-bold">T10: {info.t10}</p>
-          <p className="text-negative font-bold">DH: {info.dh}</p>
-          <p className="flex items-center gap-x-1 text-primaryText font-bold"> <span><GoPerson /></span> {info.person}</p>
-          <p className="flex items-center gap-x-1 text-primaryText font-bold"> <span><BiTargetLock /></span> {info.target}</p>
-        </div>
-      ))
     },
     {
       name: "Ethereum",
@@ -85,25 +70,7 @@ export default function Page() {
       txns: 100,
       againstTxns: 200,
       volume: formatPrice(10000),
-      m1: "-1.05%",
-      m5: "-0.85%",
-      m30: "-0.65%",
-      m1h: "-0.45%",
-      additional_info: [
-        {
-          t10: "4%",
-          dh: "10%",
-          person: 100,
-          target: 200,
-        }
-      ].map(info => (
-        <div className="flex items-center gap-x-2" key={info.t10}>
-          <p className="text-positive font-bold">T10: {info.t10}</p>
-          <p className="text-negative font-bold">DH: {info.dh}</p>
-          <p className="flex items-center gap-x-1 text-primaryText font-bold"> <span><GoPerson /></span> {info.person}</p>
-          <p className="flex items-center gap-x-1 text-primaryText font-bold"> <span><BiTargetLock /></span> {info.target}</p>
-        </div>
-      ))
+
     },
     {
       name: "Ethereum",
@@ -118,21 +85,7 @@ export default function Page() {
       txns: 100,
       againstTxns: 200,
       volume: formatPrice(10000),
-      additional_info: [
-        {
-          t10: "4%",
-          dh: "10%",
-          person: 100,
-          target: 200,
-        }
-      ].map(info => (
-        <div className="flex items-center gap-x-2" key={info.t10}>
-          <p className="text-positive font-bold">T10: {info.t10}</p>
-          <p className="text-negative font-bold">DH: {info.dh}</p>
-          <p className="flex items-center gap-x-1 text-primaryText font-bold"> <span><GoPerson /></span> {info.person}</p>
-          <p className="flex items-center gap-x-1 text-primaryText font-bold"> <span><BiTargetLock /></span> {info.target}</p>
-        </div>
-      ))
+
     },
     // Add more tokens as needed
   ];
@@ -226,7 +179,7 @@ export default function Page() {
             data={data}
             onFavoriteToggle={handleFavoriteToggle}
             onQuickBuy={handleQuickBuy}
-            showQuickBuy={true}
+            showQuickBuy={false}
           />
         </div>
 

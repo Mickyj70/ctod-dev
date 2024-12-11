@@ -4,26 +4,14 @@ import { AiOutlineClose } from "react-icons/ai";
 import { LuMessagesSquare } from "react-icons/lu";
 import { useState } from "react";
 
-<<<<<<< HEAD
-export const BottomNavbar = () => {
-    return (
-        <div className="w-full text-white flex justify-between items-center py-1 px-6 border-t border-bordercolor">
-            {/* Left Section: Live Data Indicator */}
-            <div className="flex items-center gap-x-10">
-                <div className="flex items-center gap-2 border-r border-bordercolor pr-4 h-full">
-                    <div className="w-3 h-3 bg-cyan-500 rounded-full"></div>
-                    <p className="text-sm font-bold text-primaryText">LIVE DATA ACTIVE</p>
-                </div>
-=======
 export default function BottomNavbar() {
   const [popChat, setPopChat] = useState(false);
->>>>>>> bef004a34b7a021be6507e2c55a8709307587d0f
 
   const handleChatClick = () => {
     setPopChat((prev) => !prev);
   };
   return (
-    <div className="flex items-center justify-between w-full px-6 py-1 text-white border-t border-bordercolor">
+    <div className=" fixed bottom-0 flex items-center justify-between w-full px-6 py-1 text-white border-t border-bordercolor">
       {/* Left Section: Live Data Indicator */}
       <div className="flex items-center gap-x-10">
         <div className="flex items-center h-full gap-2 pr-4 border-r border-bordercolor">

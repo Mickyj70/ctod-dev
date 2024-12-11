@@ -63,7 +63,7 @@ export const Navbar = ({ amount = 120000 }) => {
 
   return (
     <>
-      <div className="h-[130px]  border-b border-bordercolor">
+      <div className="h-[130px] border-b border-bordercolor">
         <div className="flex h-[95px] gap-x-4 border-b border-bordercolor items-center w-full">
           <div className="px-12">
             <p className="text-4xl font-extrabold">CTO&apos;D</p>
@@ -128,7 +128,7 @@ export const Navbar = ({ amount = 120000 }) => {
               {/* Dropdown */}
 
               {isDropdownOpen && (
-                <div className="absolute top-[80px] right-0 w-full bg-sidebar h-screen  rounded-md shadow-md p-4">
+                <div className="absolute top-[80px] right-0 w-full z-20 bg-sidebar h-screen  rounded-md shadow-md p-4">
                   <div className="flex items-center justify-between w-full py-12">
                     <p className="text-2xl font-bold text-white">My Account</p>
                     <p className="text-xl text-primaryText">x</p>
@@ -139,7 +139,7 @@ export const Navbar = ({ amount = 120000 }) => {
                       <ChevronRight size={30} />
                     </li>
                     <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor">
-                      <Link href="/governance">Governance</Link>
+                      <Link href="/goverance">Governance</Link>
                       <ChevronRight size={30} />
                     </li>
                     <li className="py-6 border-b border-bordercolor text-[#646470] text-lg font-bold  flex items-center justify-between uppercase">
