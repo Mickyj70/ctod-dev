@@ -8,7 +8,7 @@ import { CiSearch } from "react-icons/ci";
 import { CreateTokenModal } from "../modals/createtoken";
 
 export const Navbar = ({ amount = 120000 }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSearchDropdownOpen, setIsSearchDropdownOpen] = useState(false);
 
@@ -39,11 +39,12 @@ export const Navbar = ({ amount = 120000 }) => {
     { name: "Trending", path: "/trending" },
     { name: "Advance Mode", path: "/advance-mode" },
     { name: "Holdings", path: "/holdings" },
-    {
-      name: "Create Token",
-      isButton: true,
-      onClick: () => setIsModalOpen(true),
-    },
+    { name: "create token", path: "/create-token" },
+    // {
+    //   name: "Create Token",
+    //   isButton: true,
+    //   onClick: () => setIsModalOpen(true),
+    // },
   ];
 
   const formatPrice = (price) => {
@@ -187,10 +188,10 @@ export const Navbar = ({ amount = 120000 }) => {
           </div>
         </div>
       </div>
-      <CreateTokenModal
+      {/* <CreateTokenModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-      />
+      /> */}
     </>
   );
 };
