@@ -11,7 +11,7 @@ export default function BottomNavbar() {
     setPopChat((prev) => !prev);
   };
   return (
-    <div className="flex items-center justify-between w-full px-6 py-1 text-white border-t border-bordercolor">
+    <div className=" fixed bottom-0 flex items-center justify-between w-full px-6 py-1 text-white border-t border-bordercolor">
       {/* Left Section: Live Data Indicator */}
       <div className="flex items-center gap-x-10">
         <div className="flex items-center h-full gap-2 pr-4 border-r border-bordercolor">

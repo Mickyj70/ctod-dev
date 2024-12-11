@@ -1,7 +1,7 @@
 "use client"
 import React from "react";
 import { RxMixerHorizontal } from "react-icons/rx";
-import { Table } from "@/components/ui/table/table";
+import { Table } from "../../components/ui/table/table";
 import { GoPerson } from "react-icons/go";
 import { BiTargetLock } from "react-icons/bi";
 import { Clock } from "lucide-react";

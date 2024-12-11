@@ -1,4 +1,5 @@
 import { LinearProgress } from "@mui/material";
+import { Copy } from "lucide-react";
 import { Star } from "lucide-react";
 
 export function TokenCell({ token, isFavorite, onFavoriteToggle }) {
@@ -9,9 +10,8 @@ export function TokenCell({ token, isFavorite, onFavoriteToggle }) {
         className="flex items-center justify-center w-6 h-6"
       >
         <Star
-          className={`h-4 w-4 ${
-            isFavorite ? "fill-yellow-500 text-yellow-500" : "text-gray-500"
-          }`}
+          className={`h-4 w-4 ${isFavorite ? "fill-yellow-500 text-yellow-500" : "text-gray-500"
+            }`}
         />
       </button>
       <div className="flex items-center gap-x-3">
@@ -22,7 +22,7 @@ export function TokenCell({ token, isFavorite, onFavoriteToggle }) {
             className="object-cover w-full h-full rounded-full"
           />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-y-1">
           <div className="font-bold uppercase ">{token.name}</div>
           <LinearProgress
             className="text-secondaryText"
@@ -31,8 +31,8 @@ export function TokenCell({ token, isFavorite, onFavoriteToggle }) {
             variant="determinate"
             value={50}
           />
-          <div className="flex items-center text-xs text-gray-500 gap-x-1">
-            {token.address} <span>copu ui</span>
+          <div className="flex items-center text-xs text-gray-500 gap-x-2">
+            {token.address} <span><Copy size={14} /></span>
           </div>
 
           <div className="flex items-center text-xs gap-x-2">

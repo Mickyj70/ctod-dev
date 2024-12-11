@@ -1,7 +1,10 @@
-import localFont from "next/font/local";
+
+import { Navbar } from "../components/ui/navbar/navbar";
 import "./globals.css";
-import { Navbar } from "@/components/ui/navbar/navbar";
-import BottomNavbar from "@/components/ui/navbar/bottomNavbar";
+import BottomNavbar from "../components/ui/navbar/bottomNavbar";
+import { CustomProvider } from 'rsuite';
+
+
 
 
 // const geistSans = localFont({
@@ -28,11 +31,13 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning
 
       >
-        <Navbar />
-        <div className="min-h-[calc(97vh-130px)]">
-          {children}
+        <div className="min-h-[calc(97vh-130px)] relative">
+          <Navbar />
+          <CustomProvider theme="dark">
+            {children}
+          </CustomProvider>
+          <BottomNavbar />
         </div>
-        <BottomNavbar />
       </body>
     </html>
   );
