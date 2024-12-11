@@ -1,11 +1,7 @@
-
 import { Navbar } from "../components/ui/navbar/navbar";
 import "./globals.css";
 import BottomNavbar from "../components/ui/navbar/bottomNavbar";
-import { CustomProvider } from 'rsuite';
-
-
-
+import { CustomProvider } from "rsuite";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -19,23 +15,17 @@ import { CustomProvider } from 'rsuite';
 // });
 
 export const metadata = {
-  title: "CTO'D",
+  title: "stimmy",
   description: "",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`w-full`}
-        suppressHydrationWarning
-
-      >
+      <body className={`w-full`} suppressHydrationWarning>
         <div className="min-h-[calc(97vh-130px)] relative">
           <Navbar />
-          <CustomProvider theme="dark">
-            {children}
-          </CustomProvider>
+          <CustomProvider theme="dark">{children}</CustomProvider>
           <BottomNavbar />
         </div>
       </body>

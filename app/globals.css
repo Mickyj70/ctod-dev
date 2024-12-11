@@ -45,3 +45,13 @@ body {
 .primarybutton {
   @apply flex items-center gap-x-2 border border-bordercolor rounded-md px-3 py-3 uppercase font-bold leading-4 cursor-pointer hover:bg-sidebar hover:scale-95 duration-200;
 }
+
+/* Hide scrollbar but keep scroll functionality */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
