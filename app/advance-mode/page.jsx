@@ -1,8 +1,9 @@
+"use client";
 import { LinearProgress } from "@mui/material";
 import { Clock } from "lucide-react";
 import { UserRound } from "lucide-react";
 import { Copy } from "lucide-react";
-import React from "react";
+import { useState } from "react";
 import { RxMixerHorizontal } from "react-icons/rx";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -10,6 +11,7 @@ import { CiGlobe } from "react-icons/ci";
 import { SiAeromexico } from "react-icons/si";
 
 export default function Page() {
+  const [mavProtection, setMavProtection] = useState(false);
   return (
     <div className="Container">
       <div className="innerContainer">
@@ -24,11 +26,24 @@ export default function Page() {
 
         <div className="flex items-center justify-between w-full ">
           <div className="primarybutton">
-            <p className="text-xs">orange switch</p>
+            <button
+              onClick={() => setMavProtection(!mavProtection)}
+              className={`w-12 h-6 rounded-full p-1 transition-colors ${
+                mavProtection ? "bg-secondaryText" : "bg-gray-600"
+              }`}
+            >
+              <div
+                className={`w-4 h-4 rounded-full bg-white transition-transform ${
+                  mavProtection ? "translate-x-6" : "translate-x-0"
+                }`}
+              />
+            </button>
             <p>quick buy</p>
             <p className="flex items-center font-medium">
-              {" "}
-              <span className="pr-2 text-sm">icon</span> 100
+              <span className="pr-2 text-sm">
+                <SiAeromexico />
+              </span>{" "}
+              100
             </p>
           </div>
         </div>

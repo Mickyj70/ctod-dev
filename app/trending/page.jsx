@@ -5,9 +5,11 @@ import { Table } from "../../components/ui/table/table";
 import { GoPerson } from "react-icons/go";
 import { BiTargetLock } from "react-icons/bi";
 import { Clock } from "lucide-react";
+import { SiAeromexico } from "react-icons/si";
 import TrendingTokenTable from "../../components/ui/LockedTokenTable/TrendingTokenTable";
 export default function Page() {
   const [isQuickBuy, setIsQuickBuy] = useState(false);
+  const [mavProtection, setMavProtection] = useState(false);
 
   const formatPrice = (price) => {
     if (price >= 1000000) {
@@ -159,11 +161,24 @@ export default function Page() {
             </div>
           </div>
           <div onClick={handleQuickBuy} className="primarybutton">
-            <p className="text-xs">orange switch</p>
+            <button
+              onClick={() => setMavProtection(!mavProtection)}
+              className={`w-12 h-6 rounded-full p-1 transition-colors ${
+                mavProtection ? "bg-secondaryText" : "bg-gray-600"
+              }`}
+            >
+              <div
+                className={`w-4 h-4 rounded-full bg-white transition-transform ${
+                  mavProtection ? "translate-x-6" : "translate-x-0"
+                }`}
+              />
+            </button>
             <p>quick buy</p>
             <p className="flex items-center font-medium">
-              {" "}
-              <span className="pr-2 text-sm">icon</span> 100
+              <span className="pr-2 text-sm">
+                <SiAeromexico />
+              </span>{" "}
+              100
             </p>
           </div>
         </div>
