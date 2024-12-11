@@ -21,49 +21,7 @@ export default function Page() {
   };
 
   const token = [
-    {
-      name: "Ethereum",
-      address: "0x123...",
-      price: formatPrice(1800),
-      image: "/eth.png",
-      progress: "Loading...",
-      created: "10s",
-      liquidity: formatPrice(10000),
-      againstLiquuidity: formatPrice(50000),
-      mtk_cap: formatPrice(10000),
-      txns: 100,
-      againstTxns: 200,
-      volume: formatPrice(10000),
-      additional_info: [
-        {
-          t10: "4%",
-          dh: "10%",
-          person: 100,
-          target: 200,
-        },
-      ].map((info) => (
-        <div className="flex items-center gap-x-2" key={info.t10}>
-          <div className="flex w-full">
-            <p className="text-xs font-bold text-positive">T10:{info.t10}</p>
-          </div>
-          <div className="flex w-full">
-            <p className="text-xs font-bold text-negative">DH:{info.dh}</p>
-          </div>
-          <p className="flex items-center font-bold gap-x-1 text-primaryText">
-            <span>
-              <GoPerson size={12} />
-            </span>
-            {info.person}
-          </p>
-          <p className="flex items-center font-bold gap-x-1 text-primaryText">
-            <span>
-              <BiTargetLock size={12} />
-            </span>
-            {info.target}
-          </p>
-        </div>
-      )),
-    },
+
     {
       name: "Ethereum",
       address: "0x123...",
@@ -163,14 +121,12 @@ export default function Page() {
           <div onClick={handleQuickBuy} className="primarybutton">
             <button
               onClick={() => setMavProtection(!mavProtection)}
-              className={`w-12 h-6 rounded-full p-1 transition-colors ${
-                mavProtection ? "bg-secondaryText" : "bg-gray-600"
-              }`}
+              className={`w-12 h-6 rounded-full p-1 transition-colors ${mavProtection ? "bg-secondaryText" : "bg-gray-600"
+                }`}
             >
               <div
-                className={`w-4 h-4 rounded-full bg-white transition-transform ${
-                  mavProtection ? "translate-x-6" : "translate-x-0"
-                }`}
+                className={`w-4 h-4 rounded-full bg-white transition-transform ${mavProtection ? "translate-x-6" : "translate-x-0"
+                  }`}
               />
             </button>
             <p>quick buy</p>

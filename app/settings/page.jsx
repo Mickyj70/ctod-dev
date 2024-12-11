@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Upload } from "lucide-react";
+import { CloudUpload, Upload } from "lucide-react";
 
 export default function Settings() {
   const [activeForm, setActiveForm] = useState("general");
@@ -20,18 +20,18 @@ export default function Settings() {
                 <h2 className="mb-4 text-xl font-bold">PROFILE SETTINGS</h2>
               </div>
               <div className="flex flex-col gap-3 mb-4">
-                <p>username</p>
+                <p>Username</p>
                 <input
                   type="text"
-                  name="tokenName"
-                  className="w-full p-3 border rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
-                  placeholder="Insert coin name here"
+                  name="username"
+                  className="w-full p-3 border  rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
+                  placeholder="Enter your username"
                 />
               </div>
 
               <div className="flex flex-col gap-3 mb-8">
-                <p>image or video</p>
-                <div className="p-6 text-center border-2 border-dashed rounded-lg">
+                <p>Profile Picture</p>
+                <div className="p-6 text-center border border-bordercolor border-dashed rounded-lg">
                   <input
                     type="file"
                     id="fileInput"
@@ -50,8 +50,8 @@ export default function Settings() {
                       }
                     }}
                   />
-                  <div className="flex flex-col items-center gap-2">
-                    <Upload className="w-12 h-12 text-gray-400" />
+                  <div className="flex flex-col  items-center py-8 gap-2">
+                    <CloudUpload className="w-12 h-12 text-secondaryText" />
                     <p className="text-sm text-gray-500">
                       Drop files here or browse
                     </p>
@@ -116,14 +116,12 @@ export default function Settings() {
                     <p>Fast</p>
                     <button
                       onClick={() => setMavProtection(!mavProtection)}
-                      className={`w-12 h-6 rounded-full p-1 transition-colors ${
-                        mavProtection ? "bg-secondaryText" : "bg-gray-600"
-                      }`}
+                      className={`w-12 h-6 rounded-full p-1 transition-colors ${mavProtection ? "bg-secondaryText" : "bg-gray-600"
+                        }`}
                     >
                       <div
-                        className={`w-4 h-4 rounded-full bg-white transition-transform ${
-                          mavProtection ? "translate-x-6" : "translate-x-0"
-                        }`}
+                        className={`w-4 h-4 rounded-full bg-white transition-transform ${mavProtection ? "translate-x-6" : "translate-x-0"
+                          }`}
                       />
                     </button>
                     <p>Secure</p>
@@ -254,7 +252,7 @@ export default function Settings() {
       <div className="innerContainer ">
         {/* header */}
         <div className="mb-2">
-          <p className="header">CREATE TOKEN</p>
+          <p className="header">SETTINGS</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -264,31 +262,28 @@ export default function Settings() {
           <div className="flex gap-4 pb-4 ">
             <button
               onClick={() => setActiveForm("general")}
-              className={`px-4 py-2 rounded-lg transition-colors ${
-                activeForm === "general"
-                  ? "bg-orange-500 text-white"
-                  : "bg-transparent hover:bg-orange-500 border border-bordercolor"
-              }`}
+              className={`px-4 py-2 rounded-lg transition-colors ${activeForm === "general"
+                ? "bg-orange-500 text-white"
+                : "bg-transparent hover:bg-orange-500 border border-bordercolor"
+                }`}
             >
               PROFILE
             </button>
             <button
               onClick={() => setActiveForm("profile")}
-              className={`px-4 py-2 rounded-lg transition-colors ${
-                activeForm === "profile"
-                  ? "bg-orange-500 text-white "
-                  : "bg-transparent hover:bg-orange-500 border border-bordercolor"
-              }`}
+              className={`px-4 py-2 rounded-lg transition-colors ${activeForm === "profile"
+                ? "bg-orange-500 text-white "
+                : "bg-transparent hover:bg-orange-500 border border-bordercolor"
+                }`}
             >
               QUICK BUY
             </button>
             <button
               onClick={() => setActiveForm("security")}
-              className={`px-4 py-2 rounded-lg transition-colors ${
-                activeForm === "security"
-                  ? "bg-orange-500 text-white"
-                  : "bg-transparent hover:bg-orange-500 border border-bordercolor"
-              }`}
+              className={`px-4 py-2 rounded-lg transition-colors ${activeForm === "security"
+                ? "bg-orange-500 text-white"
+                : "bg-transparent hover:bg-orange-500 border border-bordercolor"
+                }`}
             >
               QUICK SELL
             </button>

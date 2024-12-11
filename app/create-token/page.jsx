@@ -1,7 +1,7 @@
 "use client";
 import { CreateTokenModal } from "../../components/ui/modals/createtoken";
 import { useState } from "react";
-import { Upload } from "lucide-react";
+import { CloudUpload, Upload } from "lucide-react";
 
 export default function CreateTokenPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -79,14 +79,14 @@ export default function CreateTokenPage() {
                   name="tokenDesc"
                   value={formData.tokenDesc}
                   onChange={handleInputChange}
-                  className="flex justify-start w-full h-40 p-2 border rounded resize-none bg-background "
+                  className="flex justify-start w-full h-40 p-2 border border-bordercolor rounded resize-none bg-background "
                   placeholder="Insert description here"
                 />
               </div>
 
               <div className="flex flex-col gap-3 mb-8">
                 <p>image or video</p>
-                <div className="p-6 text-center border-2 border-dashed rounded-lg">
+                <div className="p-6 text-center border border-bordercolor border-dashed rounded-lg">
                   <input
                     type="file"
                     id="fileInput"
@@ -106,7 +106,7 @@ export default function CreateTokenPage() {
                     }}
                   />
                   <div className="flex flex-col items-center gap-2">
-                    <Upload className="w-12 h-12 text-gray-400" />
+                    <CloudUpload className="w-12 h-12 text-secondaryText" />
                     <p className="text-sm text-gray-500">
                       Drop files here or browse
                     </p>
