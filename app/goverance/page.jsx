@@ -11,6 +11,9 @@ import Slider from '@mui/material/Slider';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { Table } from '../../components/ui/table/table';
+import LockedTokensTable from "../../components/ui/LockedTokenTable/lockedtokentable"
+import { CircleAlert } from 'lucide-react';
+
 
 const marks = [
     { value: 0, label: '7 days' },
@@ -38,6 +41,10 @@ export default function Page() {
                 )}
                 {currentStep === 'mylocks' && (
                     <MyLocks lockData={lockData} />
+                )}
+
+                {currentStep === 'claimrewards' && (
+                    <ClaimRewards lockData={lockData} />
                 )}
             </div>
         </div>
@@ -75,6 +82,9 @@ function LockAndEarn({ setLockData }) {
         return '0.0';
     };
 
+    const handleMyLocks = () => {
+        router.push('/goverance?step=mylocks');
+    };
     return (
         <div className="Container">
             <div className="innerContainer">
@@ -84,7 +94,7 @@ function LockAndEarn({ setLockData }) {
                 </div>
 
                 <div className="flex justify-between items-center w-full ">
-                    <div className="primarybutton">
+                    <div onClick={handleMyLocks} className="primarybutton">
                         <p>LOCK $CTO</p>
                     </div>
                 </div>
@@ -151,7 +161,7 @@ function LockAndEarn({ setLockData }) {
                             </div>
 
                             <div className="border border-secondaryText rounded-md">
-                                <p className='text-xs py-3 px-3'><span>icon</span> Locking will give you an NFT, referred to as a veNFT. You can increase the lock amount or extend the lock time at any point after</p>
+                                <p className='text-xs py-3 px-3 flex items-center gap-x-2'><span className='text-xs'><CircleAlert size={16} /></span> Locking will give you an NFT, referred to as a veNFT. You can increase the lock amount or extend the lock time at any point after</p>
                             </div>
                         </div>
                     </div>
@@ -196,44 +206,34 @@ function LockAndEarn({ setLockData }) {
 }
 
 function MyLocks({ lockData }) {
-    if (!lockData) return null;
+    const tokens = [
+        {
+            name: 'CTO',
+            address: '0x0000...0000',
+            unlockDuration: '6M 13D',
+            amount: '10K',
+            votingPower: '10K',
+            actions: [
+                { label: 'Unlock', type: 'secondary', onClick: () => alert('Unlock clicked') },
+                { label: 'Edit', type: 'primary', onClick: () => alert('Edit clicked') },
+            ],
+        },
 
-
-    const columns = [
-        {
-            label: "LOCKED",
-            key: "locked",
-        },
-        {
-            label: "Until locked",
-            key: "until_locked",
-        },
-        {
-            label: "AMOUNT",
-            key: "amount",
-        },
-        {
-            label: "Voting Power",
-            key: "voting_power",
-        },
-        {
-            label: "Actions",
-            key: "actions",
-        },
     ];
 
 
-    const actualduration = getDurationLabel(lockData.duration);
 
-    const data = [
-        {
-            locked: lockData.amount,
-            until_locked: actualduration,
-            amount: lockData.amount,
-            voting_power: `${lockData.votingPower}`,
-            action: ["Unlock", "Edit"],
-        },
-    ]
+    const actualduration = getDurationLabel(lockData?.duration);
+
+    const router = useRouter();
+
+    const handleClaim = () => {
+        router.push('/goverance?step=claimrewards');
+    };
+
+    const handleMyLocks = () => {
+        router.push('/goverance?step=mylocks');
+    };
 
     return (
 
@@ -247,7 +247,66 @@ function MyLocks({ lockData }) {
                     </div>
 
                     <div className="flex justify-between items-center w-full ">
-                        <div className="primarybutton">
+                        <div onClick={handleMyLocks} className="primarybutton">
+                            <p>MY LOCKS</p>
+                        </div>
+
+                        <div className="flex items-center gap-x-3">
+                            <div onClick={handleClaim} className="primarybutton">
+                                <p>CLAIM REWARDS</p>
+                            </div>
+                            <div className="primarybutton">
+                                <p>VOTE</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className=" w-full min-h-96 py-6 ">
+
+                        <LockedTokensTable tokens={tokens} />
+                    </div>
+                </div>
+            </div>
+
+
+        </>
+    )
+}
+function ClaimRewards({ lockData }) {
+    const actualduration = getDurationLabel(lockData?.duration);
+
+    const tokens = [
+        {
+            name: 'CTO',
+            address: '0x0000...0000',
+            unlockDuration: '6M 13D',
+            amount: '10K',
+            votingPower: '10K',
+            actions: [
+                { label: 'Claim', type: 'primary', onClick: () => alert('Claim clicked') },
+            ],
+        },
+
+    ];
+
+    const router = useRouter();
+    const handleMyLocks = () => {
+        router.push('/goverance?step=mylocks');
+    };
+
+    return (
+
+        <>
+
+            <div className="Container">
+                <div className="innerContainer">
+                    <div className="">
+                        <p className="header">CLAIM REWARDS</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+
+                    <div className="flex justify-between items-center w-full ">
+                        <div onClick={handleMyLocks} className="primarybutton">
                             <p>MY LOCKS</p>
                         </div>
 
@@ -262,19 +321,7 @@ function MyLocks({ lockData }) {
                     </div>
 
                     <div className=" w-full min-h-96 py-6 ">
-                        {/* <h2 className="font-bold">MY LOCKS</h2>
-                        <div className="mt-4">
-                            <p>Amount Locked: {lockData.amount} CTO</p>
-                            <p>Lock Duration: {getDurationLabel(lockData.duration)}</p>
-                            <p>Voting Power: {lockData.votingPower} veCTO</p>
-                        </div> */}
-
-
-                        <Table
-                            columns={columns}
-                            data={data}
-                            showQuickBuy={false}
-                        />
+                        <LockedTokensTable tokens={tokens} />
                     </div>
                 </div>
             </div>

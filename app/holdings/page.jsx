@@ -1,12 +1,9 @@
 "use client"
 import React from "react";
 import { RxMixerHorizontal } from "react-icons/rx";
-
-import { GoPerson } from "react-icons/go";
-import { BiTargetLock } from "react-icons/bi";
-import { Clock } from "lucide-react";
 import { RefreshCw } from "lucide-react";
 import { Table } from "../../components/ui/table/table"
+import HoldingTokenTable from "../../components/ui/LockedTokenTable/HoldingsTokenTable";
 export default function Page() {
   const handleFavoriteToggle = ({ index, isFavorited }) => {
     console.log(`Token ${index} is ${isFavorited ? "favorited" : "unfavorited"}`);
@@ -22,72 +19,20 @@ export default function Page() {
   };
 
 
-  const columns = [
-    { label: "Token Info", key: "token" },
-    {
-      label: "INVESTED",
-      key: "invested",
-    }, {
-      label: "REMAINING",
-      key: "remaining",
-    }, {
-      label: "SOLD",
-      key: "sold",
-    }, {
-      label: "CHANGE IN P&L",
-      key: "change_in_pl",
-    }, {
-      label: "ACTION",
-      key: "action",
-    }
-  ];
 
-  const data = [
+  const token = [
     {
       name: "Ethereum",
       address: "0x123...",
       price: formatPrice(1800),
       image: "/eth.png",
       progress: "Loading...",
-      created: "10s",
-      liquidity: formatPrice(10000),
-      againstLiquuidity: formatPrice(50000),
-      mtk_cap: formatPrice(10000),
-      txns: 100,
-      againstTxns: 200,
-      volume: formatPrice(10000),
-    },
-    {
-      name: "Ethereum",
-      address: "0x123...",
-      price: formatPrice(1800),
-      image: "/eth.png",
-      progress: "Loading...",
-      created: "10s",
-      liquidity: formatPrice(10000),
-      againstLiquuidity: formatPrice(50000),
-      mtk_cap: formatPrice(10000),
-      txns: 100,
-      againstTxns: 200,
-      volume: formatPrice(10000),
+      invested: "10k",
+      remaining: "10M",
+      sold: "10k",
+      changeInPL: "1%",
 
     },
-    {
-      name: "Ethereum",
-      address: "0x123...",
-      price: formatPrice(1800),
-      image: "/eth.png",
-      progress: "Loading...",
-      created: "10s",
-      liquidity: formatPrice(10000),
-      againstLiquuidity: formatPrice(50000),
-      mtk_cap: formatPrice(10000),
-      txns: 100,
-      againstTxns: 200,
-      volume: formatPrice(10000),
-
-    },
-    // Add more tokens as needed
   ];
 
   const handleQuickBuy = (token) => {
@@ -174,13 +119,15 @@ export default function Page() {
 
         <div className="w-full h-[calc(85vh-200px)] overflow-y-scroll">
           {/* table */}
-          <Table
+          {/* <Table
             columns={columns}
             data={data}
             onFavoriteToggle={handleFavoriteToggle}
             onQuickBuy={handleQuickBuy}
             showQuickBuy={false}
-          />
+          /> */}
+
+          <HoldingTokenTable tokens={token} />
         </div>
 
       </div>
