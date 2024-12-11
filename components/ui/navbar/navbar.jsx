@@ -6,6 +6,7 @@ import { TiStarOutline } from "react-icons/ti";
 import { ChevronRight } from "lucide-react";
 import { CiSearch } from "react-icons/ci";
 import { CreateTokenModal } from "../modals/createtoken";
+import { useRouter } from "next/navigation";
 
 export const Navbar = ({ amount = 120000 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -62,6 +63,15 @@ export const Navbar = ({ amount = 120000 }) => {
     { name: "BNB", price: formatPrice(100000) },
   ];
 
+  const router = useRouter()
+
+
+  const handleProfile = () => {
+    router.push('/profile')
+  }
+
+
+
   return (
     <>
       <div className="h-[130px] border-b border-bordercolor">
@@ -69,7 +79,7 @@ export const Navbar = ({ amount = 120000 }) => {
           <div className="px-9">
             <p className="text-3xl font-extrabold">stimmy</p>
           </div>
-          <div className="flex items-center h-full px-8 gap-x-16 border-x border-bordercolor">
+          <div className="flex items-center h-full px-8 gap-x-8 border-x border-bordercolor">
             {data.map((item, index) =>
               !item.isButton ? (
                 <Link href={item.path} key={index}>
@@ -95,13 +105,13 @@ export const Navbar = ({ amount = 120000 }) => {
             >
               <div
                 onClick={toggleSearchDropdown}
-                className="flex items-center w-full h-10 px-3 py-2 rounded-md cursor-pointer bg-sidebar gap-x-3"
+                className="flex items-center w-full h-12 px-3 py-2 rounded-md cursor-pointer bg-sidebar gap-x-3"
               >
                 <CiSearch />
                 <input
                   type="text"
-                  placeholder="SEARCH "
-                  className="w-full h-full text-xs font-bold uppercase outline-none bg-sidebar placeholder:text-placeholderText"
+                  placeholder="search by token or lp contract "
+                  className="w-full h-full text-sm font-bold uppercase outline-none bg-sidebar placeholder:text-placeholderText"
                   onClick={(e) => e.stopPropagation()}
                 />
               </div>
@@ -114,7 +124,7 @@ export const Navbar = ({ amount = 120000 }) => {
             </div>
             <div className="relative flex items-center justify-between flex-1 w-full h-full px-6 gap-x-3 bg-sidebar">
               <div className="flex items-center gap-x-4">
-                <div className="w-12 h-12 bg-white rounded-full"></div>
+                <div onClick={handleProfile} className="w-12 h-12 bg-white rounded-full cursor-pointer"></div>
                 <div>
                   <p className="text-xl font-bold">0x00000000</p>
                   <p className="font-bold text-fadedText">
