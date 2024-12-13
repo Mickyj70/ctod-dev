@@ -64,6 +64,7 @@ export default function Page() {
 
   const data = [
     {
+      id: 1,
       name: "Ethereum",
       address: "0x123...",
       price: formatPrice(1800),
@@ -105,6 +106,7 @@ export default function Page() {
       )),
     },
     {
+      id: 2,
       name: "Ethereum",
       address: "0x123...",
       price: formatPrice(1800),
@@ -146,6 +148,7 @@ export default function Page() {
       )),
     },
     {
+      id: 3,
       name: "Ethereum",
       address: "0x123...",
       price: formatPrice(1800),
@@ -211,7 +214,7 @@ export default function Page() {
             <p>quick buy</p>
             <p className="flex items-center font-medium">
               <span className="pr-2 text-sm">
-                <img src="/Icon.svg" alt="i" />
+                <img src="/Icon.svg" alt="i" className="w-4 h-4" />
               </span>
               100
             </p>

@@ -106,7 +106,7 @@ export const Navbar = ({ amount = 120000 }) => {
                 onClick={toggleSearchDropdown}
                 className="flex items-center w-full h-12 px-3 py-2 rounded-md cursor-pointer bg-sidebar gap-x-3"
               >
-                <CiSearch />
+                <img src="/search_icon.svg" alt="" className="h-5 w-5" />
                 <input
                   type="text"
                   placeholder="search by token or lp contract "
@@ -130,10 +130,10 @@ export const Navbar = ({ amount = 120000 }) => {
                 <div className="flex flex-col">
                   <p className="text-xl font-bold">0x00000000</p>
                   <div className="flex flex-row w-full ">
-                    <p className="flex gap-2 text-[10px] font-bold text-fadedText">
+                    <p className="flex items-center gap-x-2 text-sm font-bold text-fadedText">
                       BALANCE
                       <span>
-                        <img src="/Icon.svg" alt="i" />
+                        <img src="/Icon.svg" alt="" className="h-4 w-4" />
                       </span>
                       <span>{formatPrice(amount)}</span>
                     </p>
@@ -149,7 +149,7 @@ export const Navbar = ({ amount = 120000 }) => {
               {isDropdownOpen && (
                 <div className="absolute top-[80px] right-0 w-full z-20 bg-sidebar h-screen  rounded-md shadow-md p-4">
                   <div className="flex items-center justify-between w-full py-12">
-                    <p className="text-2xl font-bold text-white">MY ACCOUNT</p>
+                    <Link href={"/profile"} onClick={() => setIsDropdownOpen(false)} className="text-2xl font-bold text-white">MY ACCOUNT</Link>
                     <p className="text-xl text-primaryText">
                       <IoIosClose onClick={toggleDropdown} />
                     </p>

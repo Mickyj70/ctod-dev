@@ -168,7 +168,7 @@ function LockAndEarn({ setLockData }) {
                   onClick={handleLockSubmit}
                   className="w-full py-2 font-semibold rounded-md bg-secondaryText"
                 >
-                  Lock tokens
+                  Lock token
                 </button>
               </div>
 

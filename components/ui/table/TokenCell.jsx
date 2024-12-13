@@ -4,18 +4,18 @@ import { Star } from "lucide-react";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { CiGlobe } from "react-icons/ci";
+import Link from "next/link";
 
 export function TokenCell({ token, isFavorite, onFavoriteToggle }) {
   return (
-    <div className="flex items-center gap-4">
+    <Link href={`/token/${token.id}`} className="flex items-center gap-4 cursor-pointer">
       <button
         onClick={onFavoriteToggle}
         className="flex items-center justify-center w-6 h-6"
       >
         <Star
-          className={`h-4 w-4 ${
-            isFavorite ? "fill-yellow-500 text-yellow-500" : "text-gray-500"
-          }`}
+          className={`h-4 w-4 ${isFavorite ? "fill-yellow-500 text-yellow-500" : "text-gray-500"
+            }`}
         />
       </button>
       <div className="flex items-center gap-x-3">
@@ -55,6 +55,6 @@ export function TokenCell({ token, isFavorite, onFavoriteToggle }) {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
