@@ -9,6 +9,7 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { CiGlobe } from "react-icons/ci";
 import { SiAeromexico } from "react-icons/si";
+import Link from "next/link";
 
 export default function Page() {
   const [mavProtection, setMavProtection] = useState(false);
@@ -28,20 +29,18 @@ export default function Page() {
           <div className="primarybutton">
             <button
               onClick={() => setMavProtection(!mavProtection)}
-              className={`w-12 h-6 rounded-full p-1 transition-colors ${
-                mavProtection ? "bg-secondaryText" : "bg-gray-600"
-              }`}
+              className={`w-12 h-6 rounded-full p-1 transition-colors ${mavProtection ? "bg-secondaryText" : "bg-gray-600"
+                }`}
             >
               <div
-                className={`w-4 h-4 rounded-full bg-white transition-transform ${
-                  mavProtection ? "translate-x-6" : "translate-x-0"
-                }`}
+                className={`w-4 h-4 rounded-full bg-white transition-transform ${mavProtection ? "translate-x-6" : "translate-x-0"
+                  }`}
               />
             </button>
             <p>quick buy</p>
             <p className="flex items-center font-medium">
               <span className="pr-2 text-sm">
-                <img src="/Icon.svg" alt="i" />
+                <img src="/Icon.svg" alt="i" className="h-4 w-4" />
               </span>
               100
             </p>
@@ -58,10 +57,10 @@ export default function Page() {
   );
 }
 
-const NewlyCreated = () => {
+const NewlyCreated = ({ token }) => {
   return (
     <div className="flex flex-col w-full">
-      <div className="flex items-center justify-between w-full px-1 py-6 bg-[#0F0F10] border border-bordercolor">
+      <div className="flex items-center justify-between w-full px-4 py-6 bg-[#0F0F10] border border-bordercolor">
         {/* HEADER */}
 
         <p className="font-bold text-placeholderText"> NEWLY CREATED </p>
@@ -71,9 +70,9 @@ const NewlyCreated = () => {
         </div>
       </div>
 
-      <div className="bg-[#1D1D1E4D] py-4  border border-bordercolor">
+      <div className="bg-[#1D1D1E4D] py-4 px-4 border border-bordercolor">
         <div className="flex items-center justify-between px-1 gap-x-4">
-          <div className="flex items-center gap-x-3">
+          <Link href={`/token/${token ? token?.id : 1}`} className="flex items-center gap-x-3">
             <div className="rounded-full w-14 h-14 bg-neutral-100">
               <img
                 src={"https://via.placeholder.com/150"}
@@ -124,12 +123,12 @@ const NewlyCreated = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
 
           <div className="flex flex-col items-end gap-y-2">
             <div className="flex flex-row w-full">
               <button className="flex w-full gap-1 px-10 py-2 font-bold rounded-md bg-secondaryText">
-                <img className="mt-1 h-[14px]" src="/Icon.svg" alt="i" /> 100
+                <img className="mt-1 h-4 w-4 " src="/Icon.svg" alt="i" /> 100
               </button>
             </div>
             <div className="flex items-center gap-x-2">
@@ -150,10 +149,10 @@ const NewlyCreated = () => {
     </div>
   );
 };
-const AboutToGraduate = () => {
+const AboutToGraduate = ({ token }) => {
   return (
     <div className="flex flex-col w-full">
-      <div className="flex items-center justify-between w-full px-1 py-6 bg-[#0F0F10] border border-bordercolor">
+      <div className="flex items-center justify-between w-full px-4 py-6 bg-[#0F0F10] border border-bordercolor">
         {/* HEADER */}
 
         <p className="font-bold text-placeholderText"> NEWLY CREATED </p>
@@ -163,9 +162,9 @@ const AboutToGraduate = () => {
         </div>
       </div>
 
-      <div className="bg-[#1D1D1E4D] py-4  border border-bordercolor">
+      <div className="bg-[#1D1D1E4D] py-4 px-4  border border-bordercolor">
         <div className="flex items-center justify-between px-1 gap-x-4">
-          <div className="flex items-center gap-x-3">
+          <Link href={`/token/${token ? token?.id : 1}`} className="flex items-center gap-x-3">
             <div className="rounded-full w-14 h-14 bg-neutral-100">
               <img
                 src={"https://via.placeholder.com/150"}
@@ -216,12 +215,12 @@ const AboutToGraduate = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
 
           <div className="flex flex-col items-end gap-y-2">
             <div className="flex flex-row w-full">
               <button className="flex w-full gap-1 px-10 py-2 font-bold rounded-md bg-secondaryText">
-                <img className="mt-1 h-[14px]" src="/Icon.svg" alt="i" />
+                <img className="mt-1 h-4 w-4" src="/Icon.svg" alt="i" />
                 100
               </button>
             </div>
@@ -243,10 +242,10 @@ const AboutToGraduate = () => {
     </div>
   );
 };
-const Graduated = () => {
+const Graduated = ({ token }) => {
   return (
     <div className="flex flex-col w-full">
-      <div className="flex items-center justify-between w-full px-1 py-6 bg-[#0F0F10] border border-bordercolor">
+      <div className="flex items-center justify-between w-full px-4 py-6 bg-[#0F0F10] border border-bordercolor">
         {/* HEADER */}
 
         <p className="font-bold text-placeholderText"> NEWLY CREATED </p>
@@ -256,9 +255,9 @@ const Graduated = () => {
         </div>
       </div>
 
-      <div className="bg-[#1D1D1E4D] py-4  border border-bordercolor">
+      <div className="bg-[#1D1D1E4D] py-4  px-4 border border-bordercolor">
         <div className="flex items-center justify-between px-1 gap-x-4">
-          <div className="flex items-center gap-x-3">
+          <Link href={`/token/${token ? token?.id : 1}`} className="flex items-center gap-x-3">
             <div className="rounded-full w-14 h-14 bg-neutral-100">
               <img
                 src={"https://via.placeholder.com/150"}
@@ -309,12 +308,12 @@ const Graduated = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
 
           <div className="flex flex-col items-end gap-y-2">
             <div className="flex flex-row w-full">
               <button className="flex w-full gap-1 px-10 py-2 font-bold rounded-md bg-secondaryText">
-                <img className="mt-1 h-[14px]" src="/Icon.svg" alt="i" />
+                <img className="mt-1 h-4 w-4" src="/Icon.svg" alt="i" />
                 100
               </button>
             </div>

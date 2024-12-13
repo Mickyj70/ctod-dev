@@ -100,9 +100,8 @@ export function Table({
                       </button>
                       <button
                         onClick={handleSoldToggle}
-                        className={`px-8 py-2 rounded-md ${
-                          sold ? "text-secondaryText" : "bg-secondaryText"
-                        }  text-lg capitalize font-medium hover:scale-90 hover:duration-150 duration-150`}
+                        className={`px-8 py-2 rounded-md ${sold ? "text-secondaryText" : "bg-secondaryText"
+                          }  text-lg capitalize font-medium hover:scale-90 hover:duration-150 duration-150`}
                       >
                         {sold ? "sold" : "sell"}
                       </button>

@@ -5,6 +5,7 @@ import {
   Copy,
   Eye,
   EyeClosed,
+
   SquareArrowOutUpRight,
   Star,
 } from "lucide-react";
@@ -13,6 +14,7 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { CiGlobe } from "react-icons/ci";
 import { SellTokenModal } from "../modals/selltoken";
+import Link from "next/link";
 
 const HoldingTokenTable = ({
   tokens,
@@ -60,17 +62,16 @@ const HoldingTokenTable = ({
               className="border-b border-bordercolor hover:bg-bordercolor/20 transition-colors bg-[#1D1D1E4D] w-full"
             >
               <td className="p-3">
-                <div className="flex items-center gap-4">
+                <Link href={`/token/${token.id}`} className="flex items-center gap-4">
                   <button
                     onClick={onFavoriteToggle}
                     className="flex items-center justify-center w-6 h-6"
                   >
                     <Star
-                      className={`h-4 w-4 ${
-                        isFavorite
-                          ? "fill-yellow-500 text-yellow-500"
-                          : "text-gray-500"
-                      }`}
+                      className={`h-4 w-4 ${isFavorite
+                        ? "fill-yellow-500 text-yellow-500"
+                        : "text-gray-500"
+                        }`}
                     />
                   </button>
                   <div className="flex items-center gap-x-3">
@@ -104,12 +105,12 @@ const HoldingTokenTable = ({
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               </td>
               <td className="p-3">
                 <div className="flex items-center space-x-2">
                   <span className="flex items-center gap-x-2">
-                    <img src="/Icon.svg" alt="i" /> {token?.invested}{" "}
+                    <img src="/Icon.svg" alt="" className="h-4 w-4" /> {token?.invested}{" "}
                     <span className="text-placeholderText">
                       / {token.invested}
                     </span>
@@ -140,6 +141,10 @@ const HoldingTokenTable = ({
               <td className="p-3 font-mono ">
                 <div className="">
                   <span className="text-positive">{token.changeInPL}</span>
+                  {/* <span className="text-positive">
+                    {" "}
+                    {token.changeInPL}
+                  </span> */}
                   <p className="font-light text-placeholderText">
                     + {token.changeInPL}
                   </p>
@@ -157,9 +162,8 @@ const HoldingTokenTable = ({
                   </button>
                   <button
                     onClick={() => setIsModalOpen(true)}
-                    className={`px-8 py-2 rounded-md ${
-                      sold ? "text-secondaryText" : "bg-secondaryText"
-                    }  text-lg capitalize font-medium hover:scale-90 hover:duration-150 duration-150`}
+                    className={`px-8 py-2 rounded-md ${sold ? "text-secondaryText" : "bg-secondaryText"
+                      }  text-lg capitalize font-medium hover:scale-90 hover:duration-150 duration-150`}
                   >
                     {sold ? "sold" : "sell"}
                   </button>

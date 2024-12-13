@@ -3,6 +3,7 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { CiGlobe } from "react-icons/ci";
 import React from "react";
+import Link from "next/link";
 
 const TrendingTokenTable = ({ tokens, isQuickBuy }) => {
   return (
@@ -31,7 +32,7 @@ const TrendingTokenTable = ({ tokens, isQuickBuy }) => {
               className="border-b border-bordercolor hover:bg-bordercolor/20 transition-colors bg-[#1D1D1E4D] w-full"
             >
               <td className="p-3">
-                <div className="flex flex-col">
+                <Link href={`/token/${token.id}`} className="flex flex-col">
                   <span className="font-medium">{token.name}</span>
                   <span className="text-placeholderText text-sm truncate max-w-[200px] flex items-center gap-x-2">
                     {token.address} <Copy size={12} />
@@ -47,7 +48,7 @@ const TrendingTokenTable = ({ tokens, isQuickBuy }) => {
                       <FaTelegramPlane size={12} />
                     </span>
                   </div>
-                </div>
+                </Link>
               </td>
               <td className="p-3">
                 <div className="flex items-center space-x-2">
@@ -88,11 +89,10 @@ const TrendingTokenTable = ({ tokens, isQuickBuy }) => {
                     {token?.quickbuy?.map((action, idx) => (
                       <button
                         key={idx}
-                        className={`${
-                          action.type === "primary"
-                            ? "bg-secondaryText hover:bg-secondaryText/80"
-                            : "bg-placeholderText hover:bg-placeholderText/60"
-                        } px-10 py-3 rounded-md text-base font-medium transition-colors`}
+                        className={`${action.type === "primary"
+                          ? "bg-secondaryText hover:bg-secondaryText/80"
+                          : "bg-placeholderText hover:bg-placeholderText/60"
+                          } px-10 py-3 rounded-md text-base font-medium transition-colors`}
                         onClick={action.onClick}
                       >
                         <img src="/Icon.svg" alt="i" /> {action.label}

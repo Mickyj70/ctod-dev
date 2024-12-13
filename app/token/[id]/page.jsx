@@ -7,19 +7,21 @@ import {
   SquareArrowOutUpRight,
 } from "lucide-react";
 import dynamic from "next/dynamic";
+import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 
 const CandlestickChart = dynamic(
-  () => import("../../components/ui/cancle/candleStickChart"),
+  () => import("../../../components/ui/cancle/candleStickChart"),
   { ssr: false }
 );
 
 const ChartToolbar = dynamic(
-  () => import("../../components/ui/cancle/chartToolbar"),
+  () => import("../../../components/ui/cancle/chartToolbar"),
   { ssr: false }
 );
 
-const Dashboard = () => {
+const TokenDetail = () => {
+  const { id } = useParams();
   const data = [
     { time: "2023-01-01T00:00:00", open: 6.5, close: 7.0, high: 7.5, low: 6.0 },
     { time: "2023-01-02T00:00:00", open: 7.0, close: 6.8, high: 7.2, low: 6.5 },
@@ -61,6 +63,11 @@ const Dashboard = () => {
     setShowAdvancedSettings(!showAdvancedSettings);
   };
 
+  const holders = Array(7).fill({
+    address: '0x0000...0000',
+    percentage: '1.00%'
+  })
+
   return (
     <div className="Container">
       <div className="min-h-screen pb-10 innerContainer">
@@ -76,9 +83,9 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="flex flex-col w-4/12 h-full gap-y-5">
+          <div className="flex flex-col w-3/12 max-h-screen overflow-y-scroll  gap-y-5">
             {/* first section */}
-            <div className="flex flex-col items-center border rounded-md border-bordercolor">
+            <section className="flex flex-col items-center border rounded-md border-bordercolor">
               <div className="flex items-start w-11/12 py-4 gap-x-3">
                 <div
                   className="w-16 h-16 border rounded-full border-secondaryText bg-placeholderText"
@@ -119,13 +126,13 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className="flex items-center justify-between w-11/12 px-2 py-2 my-2 border-t border-bordercolor gap-x-2">
-                <div className="flex items-center gap-x-2 text-placeholderText">
+                <div className="flex items-center gap-x-2 text-placeholderText text-sm">
                   <p className="font-medium text-positive">
                     Top 10 holders : 14%
                   </p>{" "}
                   |<p className="font-medium text-negative">Dev holds : 70%</p>
                 </div>
-                <div className="flex items-center gap-x-3">
+                <div className="flex items-center gap-x-1">
                   <SquareArrowOutUpRight
                     size={16}
                     className="text-placeholderText"
@@ -135,27 +142,27 @@ const Dashboard = () => {
                   <img src="/telegram.svg" alt="" />
                 </div>
               </div>
-            </div>
+            </section>
 
-            <div className="flex flex-col items-center py-2 border rounded-md border-bordercolor">
+            {/* second section */}
+
+            <section className="flex flex-col items-center py-2 border rounded-md border-bordercolor">
               <div className="flex flex-col items-center justify-between w-11/12 py-4 gap-y-3">
                 <div className="flex items-center w-full gap-x-3">
                   <button
-                    className={`flex-1 rounded-md py-3 font-semibold ${
-                      activeTab === "buy"
-                        ? "bg-positive duration-100"
-                        : "bg-positive scale-95 duration-100"
-                    }`}
+                    className={`flex-1 rounded-md py-3 font-semibold ${activeTab === "buy"
+                      ? "bg-positive duration-100"
+                      : "bg-positive scale-95 duration-100"
+                      }`}
                     onClick={() => setActiveTab("buy")}
                   >
                     Buy
                   </button>
                   <button
-                    className={`flex-1 rounded-md py-3 font-semibold ${
-                      activeTab === "sell"
-                        ? "bg-negative duration-100"
-                        : "bg-negative scale-95 duration-100"
-                    }`}
+                    className={`flex-1 rounded-md py-3 font-semibold ${activeTab === "sell"
+                      ? "bg-negative duration-100"
+                      : "bg-negative scale-95 duration-100"
+                      }`}
                     onClick={() => setActiveTab("sell")}
                   >
                     Sell
@@ -345,9 +352,102 @@ const Dashboard = () => {
                   )}
                 </div>
               </div>
+            </section>
+
+
+            {/* third section */}
+            <div className=" text-white p-4 rounded-lg border border-bordercolor max-w-xl">
+              <h2 className="text-sm font-bold mb-8 tracking-wider">OVERVIEW</h2>
+
+              {/* Holders Section */}
+              <div className="border border-bordercolor rounded-lg p-2 mb-6">
+                <div className="text-center">
+                  <div className="text-placeholderText font-medium mb-1">HOLDERS</div>
+                  <div className="text-base font-bold text-white">205</div>
+                </div>
+              </div>
+
+              {/* Price Grid */}
+              <div className="grid grid-cols-2 gap-2 mb-6">
+                <div className="border border-bordercolor rounded-lg p-2">
+                  <div className="text-placeholderText font-medium mb-1 text-center">PRICE USD</div>
+                  <div className="text-base font-bold text-white text-center">${'7.52'}</div>
+                </div>
+                <div className="border border-bordercolor rounded-lg p-2">
+                  <div className="text-placeholderText font-medium mb-2 text-center">PRICE</div>
+                  <div className="text-base font-bold text-white text-center">0.009382 SON</div>
+                </div>
+              </div>
+
+              {/* Liquidity/Market Cap Grid */}
+              <div className="grid grid-cols-2 gap-2 mb-6">
+                <div className="border border-bordercolor rounded-lg p-2">
+                  <div className="text-placeholderText font-medium mb-2 text-center">LIQUIDITY</div>
+                  <div className="text-base font-bold text-white text-center">${'7.3M'}</div>
+                </div>
+                <div className="border border-bordercolor rounded-lg p-2">
+                  <div className="text-placeholderText font-medium mb-1 text-center">MARKET CAP</div>
+                  <div className="text-base font-bold text-white text-center">${'262.0M'}</div>
+                </div>
+              </div>
+
+              {/* Boosts Section */}
+              <div className="border border-gray-800 rounded-lg p-2 mb-6">
+                <div className="flex flex-col items-center justify-center">
+                  <div className="text-placeholderText font-medium mb-1 flex items-center justify-center gap-2">
+                    <img src="/thundergray.svg" alt="" />
+                    BOOSTS
+                  </div>
+                  <div className="text-base font-bold text-white">205</div>
+                </div>
+              </div>
+
+              {/* Boost Button */}
+              <button className="w-full bg-orange-800/80 hover:bg-orange-700/80 text-orange-500 font-bold py-4 px-6 rounded-lg mb-6 transition-colors flex items-center justify-center gap-2">
+                <img src="/thunder.svg" alt="" />
+                Boost
+              </button>
+
+              {/* Progress Section */}
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <p className="font-semibold">PROGRESS</p>
+                  <p className="font-semibold">50%</p>
+                </div>
+                <div className="w-full bg-sidebar rounded-md h-6">
+                  <div className="bg-orange-600 h-6 rounded-md w-1/2"></div>
+                </div>
+              </div>
             </div>
 
-            <p>3</p>
+            {/* fourth section */}
+
+            <div className="border border-bordercolor rounded-lg p-6 max-w-3xl">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-sm font-bold text-white">HOLDER DISTRIBUTION</h2>
+                <span className="text-placeholderText">205 holders</span>
+              </div>
+
+              <div className="space-y-4">
+                {holders.map((holder, index) => (
+                  <div key={index} className="flex justify-between items-center">
+                    <span className="text-placeholderText">{holder.address}</span>
+                    <span className="text-placeholderText">{holder.percentage}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex justify-between mt-6">
+                <button className="text-placeholderText hover:text-white transition-colors">
+                  {'< previous'}
+                </button>
+                <button className="text-placeholderText hover:text-white transition-colors">
+                  {'next >'}
+                </button>
+              </div>
+            </div>
+
+
           </div>
         </div>
       </div>
@@ -355,7 +455,7 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default TokenDetail;
 
 function TradesAndThreads() {
   const [activeTab, setActiveTab] = useState("Latest Trades");
@@ -400,21 +500,19 @@ function TradesAndThreads() {
       <div className="flex mb-4 border-b border-bordercolor">
         <button
           onClick={() => setActiveTab("Latest Trades")}
-          className={`px-4 py-2 text-base font-bold ${
-            activeTab === "Latest Trades"
-              ? "text-white border-b-2 border-orange-500"
-              : "text-placeholderText"
-          }`}
+          className={`px-4 py-2 text-base font-bold ${activeTab === "Latest Trades"
+            ? "text-white border-b-2 border-orange-500"
+            : "text-placeholderText"
+            }`}
         >
           Latest Trades
         </button>
         <button
           onClick={() => setActiveTab("Threads")}
-          className={`px-4 py-2 text-base font-bold ${
-            activeTab === "Threads"
-              ? "text-white border-b-2 border-orange-500"
-              : "text-placeholderText"
-          }`}
+          className={`px-4 py-2 text-base font-bold ${activeTab === "Threads"
+            ? "text-white border-b-2 border-orange-500"
+            : "text-placeholderText"
+            }`}
         >
           Threads
         </button>
@@ -439,9 +537,8 @@ function TradesAndThreads() {
                 <tr key={index} className="border-b border-gray-800">
                   <td className="py-2 text-white">{trade.date}</td>
                   <td
-                    className={`py-2 ${
-                      trade.type === "Buy" ? "text-positive" : "text-negative"
-                    }`}
+                    className={`py-2 ${trade.type === "Buy" ? "text-positive" : "text-negative"
+                      }`}
                   >
                     {trade.type}
                   </td>

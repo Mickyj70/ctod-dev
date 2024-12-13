@@ -61,28 +61,22 @@ export default function Page() {
             <div className="flex-col px-6 primarybutton gap-y-1">
               <p>INVESTED</p>
               <p className="flex items-center w-full gap-x-1">
-                <span className="text-xs">
-                  <img src="/Icon.svg" alt="i" />
-                </span>{" "}
-                100k
+                {" "}
+                <span className="text-xs"><img src="/Icon.svg" alt="" className="h-4 w-4" /></span> 100k
               </p>
             </div>
             <div className="flex-col px-6 primarybutton gap-y-1">
               <p>REMAINING</p>
               <p className="flex items-center w-full gap-x-1">
-                <span className="text-xs">
-                  <img src="/Icon.svg" alt="i" />
-                </span>{" "}
-                50k
+                {" "}
+                <span className="text-xs"><img src="/Icon.svg" alt="" className="h-4 w-4" /></span> 50k
               </p>
             </div>
-            <div className="flex-col px-6 primarybutton gap-y-1">
-              <p>SOLD</p>
-              <p className="flex items-center w-full gap-x-1">
-                <span className="text-xs">
-                  <img src="/Icon.svg" alt="i" />
-                </span>{" "}
-                50k
+            <div className="flex-col px-6 primarybutton gap-y-1 ">
+              <p className="w-full">SOLD</p>
+              <p className="flex items-start w-full gap-x-1">
+
+                <span className="text-xs"><img src="/Icon.svg" alt="" className="h-4 w-4" /></span> 50k
               </p>
             </div>
             <div className="flex-col px-6 primarybutton gap-y-1">
@@ -108,9 +102,7 @@ export default function Page() {
             </div>
 
             <div className="flex items-center w-full h-12 px-3 py-2 border rounded-md bg-sidebar border-bordercolor gap-x-3">
-              <p>
-                <CiSearch />
-              </p>
+              <img src="/search_icon.svg" alt="" />
               <input
                 type="text"
                 placeholder="SEARCH TOKEN "
@@ -121,12 +113,10 @@ export default function Page() {
 
           <div className="flex items-center gap-x-3 ">
             <div className="flex items-center w-full h-12 px-3 py-2 border rounded-md bg-sidebar border-bordercolor gap-x-3">
-              <p>
-                <CiSearch />
-              </p>
+
               <input
                 type="text"
-                placeholder="SEARCH TOKEN "
+                placeholder="INPUT TOKEN ADRESS"
                 className="w-full h-full font-bold uppercase outline-none bg-sidebar placeholder:text-placeholderText"
               />
             </div>
