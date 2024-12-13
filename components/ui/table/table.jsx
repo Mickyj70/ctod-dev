@@ -9,7 +9,7 @@ import { Clock } from "lucide-react";
 import { SquareArrowOutUpRight } from "lucide-react";
 import { EyeClosed } from "lucide-react";
 import { Eye } from "lucide-react";
-import { SiAeromexico } from "react-icons/si";
+// import { SiAeromexico } from "react-icons/si";
 
 export function Table({
   columns,
@@ -58,7 +58,7 @@ export function Table({
                   {column.key === "liquidity" ? (
                     <div className="flex items-center gap-x-1">
                       <span>
-                        <SiAeromexico size={12} />
+                        <img src="/Icon.svg" alt="i" />
                       </span>
                       <span className="text-xs font-bold text-white">
                         {item[column.key]}

@@ -41,8 +41,8 @@ export default function Page() {
             <p>quick buy</p>
             <p className="flex items-center font-medium">
               <span className="pr-2 text-sm">
-                <SiAeromexico />
-              </span>{" "}
+                <img src="/Icon.svg" alt="i" />
+              </span>
               100
             </p>
           </div>
@@ -129,8 +129,7 @@ const NewlyCreated = () => {
           <div className="flex flex-col items-end gap-y-2">
             <div className="flex flex-row w-full">
               <button className="flex w-full gap-1 px-10 py-2 font-bold rounded-md bg-secondaryText">
-                <SiAeromexico className="w-6 h-6" />
-                100
+                <img className="mt-1 h-[14px]" src="/Icon.svg" alt="i" /> 100
               </button>
             </div>
             <div className="flex items-center gap-x-2">
@@ -222,7 +221,7 @@ const AboutToGraduate = () => {
           <div className="flex flex-col items-end gap-y-2">
             <div className="flex flex-row w-full">
               <button className="flex w-full gap-1 px-10 py-2 font-bold rounded-md bg-secondaryText">
-                <SiAeromexico className="w-6 h-6" />
+                <img className="mt-1 h-[14px]" src="/Icon.svg" alt="i" />
                 100
               </button>
             </div>
@@ -315,7 +314,7 @@ const Graduated = () => {
           <div className="flex flex-col items-end gap-y-2">
             <div className="flex flex-row w-full">
               <button className="flex w-full gap-1 px-10 py-2 font-bold rounded-md bg-secondaryText">
-                <SiAeromexico className="w-6 h-6" />
+                <img className="mt-1 h-[14px]" src="/Icon.svg" alt="i" />
                 100
               </button>
             </div>

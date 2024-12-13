@@ -7,6 +7,7 @@ import { ChevronRight } from "lucide-react";
 import { CiSearch } from "react-icons/ci";
 import { CreateTokenModal } from "../modals/createtoken";
 import { useRouter } from "next/navigation";
+import { IoIosClose } from "react-icons/io";
 
 export const Navbar = ({ amount = 120000 }) => {
   // const [isModalOpen, setIsModalOpen] = useState(false);
@@ -64,14 +65,11 @@ export const Navbar = ({ amount = 120000 }) => {
     { name: "BNB", price: formatPrice(100000) },
   ];
 
-  const router = useRouter()
-
+  const router = useRouter();
 
   const handleProfile = () => {
-    router.push('/profile')
-  }
-
-
+    router.push("/profile");
+  };
 
   return (
     <>
@@ -125,12 +123,21 @@ export const Navbar = ({ amount = 120000 }) => {
             </div>
             <div className="relative flex items-center justify-between flex-1 w-full h-full px-6 gap-x-3 bg-sidebar">
               <div className="flex items-center gap-x-4">
-                <div onClick={handleProfile} className="w-12 h-12 bg-white rounded-full cursor-pointer"></div>
-                <div>
+                <div
+                  onClick={handleProfile}
+                  className="w-12 h-12 bg-white rounded-full cursor-pointer"
+                ></div>
+                <div className="flex flex-col">
                   <p className="text-xl font-bold">0x00000000</p>
-                  <p className="font-bold text-fadedText">
-                    BALANCE <span>icon</span> <span>{formatPrice(amount)}</span>
-                  </p>
+                  <div className="flex flex-row w-full ">
+                    <p className="flex gap-2 text-[10px] font-bold text-fadedText">
+                      BALANCE
+                      <span>
+                        <img src="/Icon.svg" alt="i" />
+                      </span>
+                      <span>{formatPrice(amount)}</span>
+                    </p>
+                  </div>
                 </div>
               </div>
               <div onClick={toggleDropdown} className="cursor-pointer">
@@ -142,8 +149,10 @@ export const Navbar = ({ amount = 120000 }) => {
               {isDropdownOpen && (
                 <div className="absolute top-[80px] right-0 w-full z-20 bg-sidebar h-screen  rounded-md shadow-md p-4">
                   <div className="flex items-center justify-between w-full py-12">
-                    <p className="text-2xl font-bold text-white">My Account</p>
-                    <p className="text-xl text-primaryText">x</p>
+                    <p className="text-2xl font-bold text-white">MY ACCOUNT</p>
+                    <p className="text-xl text-primaryText">
+                      <IoIosClose />
+                    </p>
                   </div>
                   <ul className="mt-2">
                     <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor">

@@ -95,7 +95,7 @@ const TrendingTokenTable = ({ tokens, isQuickBuy }) => {
                         } px-10 py-3 rounded-md text-base font-medium transition-colors`}
                         onClick={action.onClick}
                       >
-                        icon {action.label}
+                        <img src="/Icon.svg" alt="i" /> {action.label}
                       </button>
                     ))}
                   </div>

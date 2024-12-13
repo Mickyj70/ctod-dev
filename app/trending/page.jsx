@@ -21,7 +21,6 @@ export default function Page() {
   };
 
   const token = [
-
     {
       name: "Ethereum",
       address: "0x123...",
@@ -121,19 +120,21 @@ export default function Page() {
           <div onClick={handleQuickBuy} className="primarybutton">
             <button
               onClick={() => setMavProtection(!mavProtection)}
-              className={`w-12 h-6 rounded-full p-1 transition-colors ${mavProtection ? "bg-secondaryText" : "bg-gray-600"
-                }`}
+              className={`w-12 h-6 rounded-full p-1 transition-colors ${
+                mavProtection ? "bg-secondaryText" : "bg-gray-600"
+              }`}
             >
               <div
-                className={`w-4 h-4 rounded-full bg-white transition-transform ${mavProtection ? "translate-x-6" : "translate-x-0"
-                  }`}
+                className={`w-4 h-4 rounded-full bg-white transition-transform ${
+                  mavProtection ? "translate-x-6" : "translate-x-0"
+                }`}
               />
             </button>
             <p>quick buy</p>
             <p className="flex items-center font-medium">
               <span className="pr-2 text-sm">
-                <SiAeromexico />
-              </span>{" "}
+                <img src="/Icon.svg" alt="i" />
+              </span>
               100
             </p>
           </div>

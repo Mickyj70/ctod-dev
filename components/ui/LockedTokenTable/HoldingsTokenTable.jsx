@@ -107,7 +107,7 @@ const HoldingTokenTable = ({
               <td className="p-3">
                 <div className="flex items-center space-x-2">
                   <span className="flex items-center gap-x-2">
-                    icon {token?.invested}{" "}
+                    <img src="/Icon.svg" alt="i" /> {token?.invested}{" "}
                     <span className="text-placeholderText">
                       / {token.invested}
                     </span>
@@ -116,7 +116,10 @@ const HoldingTokenTable = ({
               </td>
               <td className="p-3 font-mono ">
                 <div className="">
-                  <span> icon {token.remaining}</span>
+                  <span>
+                    {" "}
+                    <img src="/Icon.svg" alt="i" /> {token.remaining}
+                  </span>
                   <p className="font-light text-placeholderText">
                     {token.remaining}
                   </p>
@@ -124,7 +127,10 @@ const HoldingTokenTable = ({
               </td>
               <td className="p-3 font-mono ">
                 <div className="">
-                  <span> icon {token.sold}</span>
+                  <span>
+                    {" "}
+                    <img src="/Icon.svg" alt="i" /> {token.sold}
+                  </span>
                   <p className="font-light text-placeholderText">
                     {token.sold}
                   </p>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { RxMixerHorizontal } from "react-icons/rx";
 import { Table } from "../../components/ui/table/table";
@@ -6,18 +6,19 @@ import { GoPerson } from "react-icons/go";
 import { BiTargetLock } from "react-icons/bi";
 export default function Page() {
   const handleFavoriteToggle = (index, isFavorited) => {
-    console.log(`Token ${index} is ${isFavorited ? "favorited" : "unfavorited"}`);
+    console.log(
+      `Token ${index} is ${isFavorited ? "favorited" : "unfavorited"}`
+    );
   };
 
   const formatPrice = (price) => {
     if (price >= 1000000) {
-      return (price / 1000000) + 'M';
+      return price / 1000000 + "M";
     } else if (price >= 1000) {
-      return (price / 1000) + 'k';
+      return price / 1000 + "k";
     }
     return price.toString();
   };
-
 
   const columns = [
     { label: "Token Info", key: "token" },
@@ -59,7 +60,6 @@ export default function Page() {
       label: "ADDITIONAL INFO",
       key: "additional_info",
     },
-
   ];
 
   const data = [
@@ -82,15 +82,27 @@ export default function Page() {
           dh: "10%",
           person: 100,
           target: 200,
-        }
-      ].map(info => (
+        },
+      ].map((info) => (
         <div className="flex items-center gap-x-2" key={info.t10}>
-          <p className="text-positive font-bold">T10: {info.t10}</p>
-          <p className="text-negative font-bold">DH: {info.dh}</p>
-          <p className="flex items-center gap-x-1 text-primaryText font-bold"> <span><GoPerson /></span> {info.person}</p>
-          <p className="flex items-center gap-x-1 text-primaryText font-bold"> <span><BiTargetLock /></span> {info.target}</p>
+          <p className="font-bold text-positive">T10: {info.t10}</p>
+          <p className="font-bold text-negative">DH: {info.dh}</p>
+          <p className="flex items-center font-bold gap-x-1 text-primaryText">
+            {" "}
+            <span>
+              <GoPerson />
+            </span>{" "}
+            {info.person}
+          </p>
+          <p className="flex items-center font-bold gap-x-1 text-primaryText">
+            {" "}
+            <span>
+              <BiTargetLock />
+            </span>{" "}
+            {info.target}
+          </p>
         </div>
-      ))
+      )),
     },
     {
       name: "Ethereum",
@@ -111,15 +123,27 @@ export default function Page() {
           dh: "10%",
           person: 100,
           target: 200,
-        }
-      ].map(info => (
+        },
+      ].map((info) => (
         <div className="flex items-center gap-x-2" key={info.t10}>
-          <p className="text-positive font-bold">T10: {info.t10}</p>
-          <p className="text-negative font-bold">DH: {info.dh}</p>
-          <p className="flex items-center gap-x-1 text-primaryText font-bold"> <span><GoPerson /></span> {info.person}</p>
-          <p className="flex items-center gap-x-1 text-primaryText font-bold"> <span><BiTargetLock /></span> {info.target}</p>
+          <p className="font-bold text-positive">T10: {info.t10}</p>
+          <p className="font-bold text-negative">DH: {info.dh}</p>
+          <p className="flex items-center font-bold gap-x-1 text-primaryText">
+            {" "}
+            <span>
+              <GoPerson />
+            </span>{" "}
+            {info.person}
+          </p>
+          <p className="flex items-center font-bold gap-x-1 text-primaryText">
+            {" "}
+            <span>
+              <BiTargetLock />
+            </span>{" "}
+            {info.target}
+          </p>
         </div>
-      ))
+      )),
     },
     {
       name: "Ethereum",
@@ -140,15 +164,27 @@ export default function Page() {
           dh: "10%",
           person: 100,
           target: 200,
-        }
-      ].map(info => (
+        },
+      ].map((info) => (
         <div className="flex items-center gap-x-2" key={info.t10}>
-          <p className="text-positive font-bold">T10: {info.t10}</p>
-          <p className="text-negative font-bold">DH: {info.dh}</p>
-          <p className="flex items-center gap-x-1 text-primaryText font-bold"> <span><GoPerson /></span> {info.person}</p>
-          <p className="flex items-center gap-x-1 text-primaryText font-bold"> <span><BiTargetLock /></span> {info.target}</p>
+          <p className="font-bold text-positive">T10: {info.t10}</p>
+          <p className="font-bold text-negative">DH: {info.dh}</p>
+          <p className="flex items-center font-bold gap-x-1 text-primaryText">
+            {" "}
+            <span>
+              <GoPerson />
+            </span>{" "}
+            {info.person}
+          </p>
+          <p className="flex items-center font-bold gap-x-1 text-primaryText">
+            {" "}
+            <span>
+              <BiTargetLock />
+            </span>{" "}
+            {info.target}
+          </p>
         </div>
-      ))
+      )),
     },
     // Add more tokens as needed
   ];
@@ -156,7 +192,6 @@ export default function Page() {
   const handleQuickBuy = (token) => {
     console.log(`Quick buy ${token.name}`);
   };
-
 
   return (
     <div className="Container">
@@ -167,14 +202,19 @@ export default function Page() {
           <p>New token pairs in the last 24-hours updated in real time</p>
         </div>
 
-        <div className="flex justify-between items-center w-full ">
+        <div className="flex items-center justify-between w-full ">
           <div className="primarybutton">
             <RxMixerHorizontal size={20} />
             <p>filters</p>
           </div>
           <div className="primarybutton">
             <p>quick buy</p>
-            <p className="flex items-center font-medium"> <span className="pr-2 text-sm">icon</span> 100</p>
+            <p className="flex items-center font-medium">
+              <span className="pr-2 text-sm">
+                <img src="/Icon.svg" alt="i" />
+              </span>
+              100
+            </p>
           </div>
         </div>
 
@@ -188,7 +228,6 @@ export default function Page() {
             showQuickBuy={true}
           />
         </div>
-
       </div>
     </div>
   );
