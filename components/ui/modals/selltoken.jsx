@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
-export const CreateTokenModal = ({ isOpen, onClose }) => {
+export const SellTokenModal = ({ isOpen, onClose }) => {
   const [amount, setAmount] = useState("");
   const [data, setData] = useState("");
   const [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
@@ -14,8 +14,8 @@ export const CreateTokenModal = ({ isOpen, onClose }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
       <div className="w-[563px] bg-sidebar border border-bordercolor rounded-lg p-6">
         {/* Add close button */}
-        <div className="flex justify-end mb-4 border-b-2 border-bordercolor">
-          <p className="text-white ">sell</p>
+        <div className="flex justify-between mb-4 border-b-2 border-bordercolor">
+          <p className="text-white">Sell</p>
           <button
             onClick={onClose}
             className="text-primaryText hover:text-white"
@@ -23,40 +23,71 @@ export const CreateTokenModal = ({ isOpen, onClose }) => {
             ✕
           </button>
         </div>
+        {/* add headers and all */}
+        <div className="flex justify-between pb-3 mb-4 border-b-2 border-bordercolor">
+          <div className="gap-2 ">
+            <p className="text-primaryText">TOKEN</p>
+            <p>SNOOGE</p>
+          </div>
+          <div className="gap-2 ">
+            <p className="text-primaryText">INVESTED</p>
+            <p className="flex gap-2">
+              <img src="/Icon.svg" alt="i" />
+              10K
+            </p>
+          </div>
+          <div className="gap-2 ">
+            <p className="text-primaryText">REMAINING</p>
+            <p className="flex gap-2">
+              <img src="/Icon.svg" alt="i" />
+              10K
+            </p>
+          </div>
+          <div className="gap-2 ">
+            <p className="text-primaryText">SOLD</p>
+            <p className="flex gap-2">
+              <img src="/Icon.svg" alt="i" />0
+            </p>
+          </div>
+          <div className="gap-2 ">
+            <p className="text-primaryText">CHANGE IN P&L</p>
+            <p className="text-positive">10.04%</p>
+          </div>
+        </div>
         {/* Input Section */}
         <div className="mb-4 space-y-4 border-b-2 border-bordercolor">
-          <div className="flex space-x-4 ">
+          <div className="flex justify-between ">
             <p> sell now</p>
             <p> Balance : 10,000</p>
           </div>
-          <div className="flex mb-1 gap-x-1">
+          <div className="flex w-full mb-1 gap-x-1">
             <input
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="w-1/5 p-3 border rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
-              placeholder="0.0"
+              className="w-1/4 p-3 border rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
+              placeholder="Initial"
             />
             <input
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="w-1/5 p-3 border rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
-              placeholder="0.0"
+              className="w-1/4 p-3 border rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
+              placeholder="25%"
             />
             <input
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="w-1/5 p-3 border rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
-              placeholder="0.0"
+              className="w-1/4 p-3 border rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
+              placeholder="50%"
             />
             <input
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="w-1/5 p-3 border rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
-              placeholder="0.0"
+              className="w-1/4 p-3 border rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
+              placeholder="100%"
             />
           </div>
           <div className="flex mb-2">
@@ -65,7 +96,7 @@ export const CreateTokenModal = ({ isOpen, onClose }) => {
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               className="w-4/5 p-3 border rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
-              placeholder="0.0"
+              placeholder="Amount to sell in SNOOGE"
             />
             <input
               type="text"
@@ -92,20 +123,14 @@ export const CreateTokenModal = ({ isOpen, onClose }) => {
 
           {showAdvancedSettings && (
             <div className="pt-4 mt-4 space-y-4 border-t border-bordercolor">
-              <div className="space-y-2">
-                <label className="text-sm text-primaryText">Slippage</label>
-                <input
-                  type="number"
-                  className="w-full p-3 border rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
-                  placeholder="0.5%"
-                />
+              <div className="flex justify-between p-4 bg-background">
+                <p className="text-sm text-white text-primaryText">Slippage</p>
+                <p className="text-sm text-white text-primaryText">5%</p>
               </div>
 
               <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <label className="text-sm text-primaryText">
-                    Mav Protection
-                  </label>
+                <div className="flex items-center justify-between p-4 bg-background">
+                  <label className="text-sm text-white ">Mev Protection</label>
                   <button
                     onClick={() => setMavProtection(!mavProtection)}
                     className={`w-12 h-6 rounded-full p-1 transition-colors ${
@@ -121,30 +146,24 @@ export const CreateTokenModal = ({ isOpen, onClose }) => {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm text-primaryText">priority fee</label>
-                <input
-                  type="number"
-                  className="w-full p-3 border rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
-                  placeholder="30 minutes"
-                />
+              <div className="flex justify-between p-4 bg-background">
+                <p className="text-sm text-white text-primaryText">
+                  Priority Fee
+                </p>
+                <p className="text-sm text-white text-primaryText">10 SON</p>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm text-primaryText">
-                  Bribery amount
-                </label>
-                <input
-                  type="number"
-                  className="w-full p-3 border rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
-                  placeholder="30 minutes"
-                />
+              <div className="flex justify-between p-4 bg-background">
+                <p className="text-sm text-white text-primaryText">
+                  Bribery Fee
+                </p>
+                <p className="text-sm text-white text-primaryText">3 SON</p>
               </div>
             </div>
           )}
         </div>
 
-        <button className="w-full py-3 font-bold text-white rounded-md bg-secondaryText hover:bg-secondaryText/90">
+        <button className="w-full py-3 mb-3 font-bold text-white rounded-md bg-secondaryText hover:bg-secondaryText/90">
           Quick Sell
         </button>
         {/* Warning Message */}

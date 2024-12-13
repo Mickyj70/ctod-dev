@@ -1,12 +1,15 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { RxMixerHorizontal } from "react-icons/rx";
 import { RefreshCw } from "lucide-react";
 import { Table } from "../../components/ui/table/table";
 import HoldingTokenTable from "../../components/ui/LockedTokenTable/HoldingsTokenTable";
 import { CiSearch } from "react-icons/ci";
+import { SellTokenModal } from "../../components/ui/modals/selltoken";
 
 export default function Page() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleFavoriteToggle = ({ index, isFavorited }) => {
     console.log(
       `Token ${index} is ${isFavorited ? "favorited" : "unfavorited"}`
@@ -135,9 +138,16 @@ export default function Page() {
             showQuickBuy={false}
           /> */}
 
-          <HoldingTokenTable tokens={token} />
+          <HoldingTokenTable
+            tokens={token}
+            onSellClick={() => setIsModalOpen(true)}
+          />
         </div>
       </div>
+      <SellTokenModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 }
