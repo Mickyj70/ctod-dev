@@ -141,10 +141,10 @@ const HoldingTokenTable = ({
               <td className="p-3 font-mono ">
                 <div className="">
                   <span className="text-positive">{token.changeInPL}</span>
-                  <span className="text-positive">
+                  {/* <span className="text-positive">
                     {" "}
                     {token.changeInPL}
-                  </span>
+                  </span> */}
                   <p className="font-light text-placeholderText">
                     + {token.changeInPL}
                   </p>
