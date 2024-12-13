@@ -151,21 +151,25 @@ export const Navbar = ({ amount = 120000 }) => {
                   <div className="flex items-center justify-between w-full py-12">
                     <p className="text-2xl font-bold text-white">MY ACCOUNT</p>
                     <p className="text-xl text-primaryText">
-                      <IoIosClose />
+                      <IoIosClose onClick={toggleDropdown} />
                     </p>
                   </div>
                   <ul className="mt-2">
                     <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor">
-                      <Link href="/settings">Settings</Link>
+                      <Link href="/settings" onClick={toggleDropdown}>
+                        Settings
+                      </Link>
                       <ChevronRight size={30} />
                     </li>
                     <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor">
-                      <Link href="/goverance">Governance</Link>
+                      <Link href="/goverance" onClick={toggleDropdown}>
+                        Governance
+                      </Link>
                       <ChevronRight size={30} />
                     </li>
                     <li className="py-6 border-b border-bordercolor text-[#646470] text-lg font-bold  flex items-center justify-between uppercase">
                       <p className="relative">
-                        Referral Program{" "}
+                        Referral Program
                         <span className="absolute ml-2 -top-3 text-[10px] border border-[#646470] rounded-md px-1">
                           Soon
                         </span>
@@ -173,7 +177,9 @@ export const Navbar = ({ amount = 120000 }) => {
                       <ChevronRight size={30} />
                     </li>
                     <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor text-negative">
-                      <Link href="/logout">Logout</Link>
+                      <Link href="/logout" onClick={toggleDropdown}>
+                        Logout
+                      </Link>
                       <ChevronRight color="white" size={30} />
                     </li>
                   </ul>
