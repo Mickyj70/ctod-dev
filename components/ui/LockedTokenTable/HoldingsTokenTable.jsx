@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { CiGlobe } from "react-icons/ci";
+import { SellTokenModal } from "../modals/selltoken";
 
 const HoldingTokenTable = ({
   tokens,
@@ -22,6 +23,7 @@ const HoldingTokenTable = ({
   const [favorites, setFavorites] = useState(new Set());
   const [eye, setEye] = useState(false);
   const [sold, setSold] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleFavoriteToggle = (index) => {
     const newFavorites = new Set(favorites);
@@ -116,8 +118,7 @@ const HoldingTokenTable = ({
               </td>
               <td className="p-3 font-mono ">
                 <div className="">
-                  <span>
-                    {" "}
+                  <span className="flex gap-1">
                     <img src="/Icon.svg" alt="i" /> {token.remaining}
                   </span>
                   <p className="font-light text-placeholderText">
@@ -127,8 +128,7 @@ const HoldingTokenTable = ({
               </td>
               <td className="p-3 font-mono ">
                 <div className="">
-                  <span>
-                    {" "}
+                  <span className="flex gap-1">
                     <img src="/Icon.svg" alt="i" /> {token.sold}
                   </span>
                   <p className="font-light text-placeholderText">
@@ -139,10 +139,7 @@ const HoldingTokenTable = ({
 
               <td className="p-3 font-mono ">
                 <div className="">
-                  <span className="text-positive">
-                    {" "}
-                    icon {token.changeInPL}
-                  </span>
+                  <span className="text-positive">{token.changeInPL}</span>
                   <p className="font-light text-placeholderText">
                     + {token.changeInPL}
                   </p>
@@ -159,7 +156,7 @@ const HoldingTokenTable = ({
                     share
                   </button>
                   <button
-                    onClick={handleSoldToggle}
+                    onClick={() => setIsModalOpen(true)}
                     className={`px-8 py-2 rounded-md ${
                       sold ? "text-secondaryText" : "bg-secondaryText"
                     }  text-lg capitalize font-medium hover:scale-90 hover:duration-150 duration-150`}
@@ -178,6 +175,10 @@ const HoldingTokenTable = ({
           ))}
         </tbody>
       </table>
+      <SellTokenModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 };

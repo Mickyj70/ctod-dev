@@ -5,6 +5,7 @@ import { CloudUpload, Upload } from "lucide-react";
 
 export default function CreateTokenPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     tokenName: "",
     tokenTicker: "",
@@ -17,6 +18,7 @@ export default function CreateTokenPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsModalOpen(true);
   };
 
   const handleInputChange = (e) => {
@@ -79,14 +81,14 @@ export default function CreateTokenPage() {
                   name="tokenDesc"
                   value={formData.tokenDesc}
                   onChange={handleInputChange}
-                  className="flex justify-start w-full h-40 p-2 border border-bordercolor rounded resize-none bg-background "
+                  className="flex justify-start w-full h-40 p-2 border rounded resize-none border-bordercolor bg-background "
                   placeholder="Insert description here"
                 />
               </div>
 
               <div className="flex flex-col gap-3 mb-8">
                 <p>image or video</p>
-                <div className="p-6 text-center border border-bordercolor border-dashed rounded-lg">
+                <div className="p-6 text-center border border-dashed rounded-lg border-bordercolor">
                   <input
                     type="file"
                     id="fileInput"
@@ -166,7 +168,7 @@ export default function CreateTokenPage() {
               </div>
               <button
                 type="submit"
-                onClick={handleSubmit}
+                onClick={() => setIsModalOpen(true)}
                 className="w-full p-3 text-white transition-colors rounded-md bg-secondaryText hover:bg-secondaryText"
               >
                 create token
@@ -224,6 +226,10 @@ export default function CreateTokenPage() {
           </div>
         </div>
       </div>
+      <CreateTokenModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 }
