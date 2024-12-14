@@ -114,7 +114,7 @@ export default function Page() {
 
 function CoinsHeldTable() {
   return (
-    <div className="w-full px-4 py-6 border rounded-md border-bordercolor">
+    <div className="w-full px-4 py-6 border rounded-md border-bordercolor ">
       <h2 className="font-bold uppercase text-md">Coins Held</h2>
 
       <div className="p-4 mt-3 text-white rounded-md shadow-lg ">
@@ -151,12 +151,12 @@ function CoinsHeldTable() {
 
           {/* Actions */}
           <div className="flex justify-end w-1/3 text-right ">
-            <div className="flex items-center  w-fit gap-x-4">
+            <div className="flex items-center w-fit gap-x-4">
               <button className="flex items-center font-semibold uppercase gap-x-2 text-placeholderText">
                 <RotateCw size={14} />
                 <p>Refresh</p>
               </button>
-              <button className="px-4 py-2 font-medium text-white rounded-md  bg-secondaryText hover:bg-secondaryText/85">
+              <button className="px-4 py-2 font-medium text-white rounded-md bg-secondaryText hover:bg-secondaryText/85">
                 View Coin
               </button>
             </div>
