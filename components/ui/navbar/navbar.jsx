@@ -8,6 +8,7 @@ import { CiSearch } from "react-icons/ci";
 import { CreateTokenModal } from "../modals/createtoken";
 import { useRouter } from "next/navigation";
 import { IoIosClose } from "react-icons/io";
+import { motion } from "motion/react"
 
 export const Navbar = ({ amount = 120000 }) => {
   // const [isModalOpen, setIsModalOpen] = useState(false);
@@ -42,11 +43,7 @@ export const Navbar = ({ amount = 120000 }) => {
     { name: "Advance Mode", path: "/advance-mode" },
     { name: "Holdings", path: "/holdings" },
     { name: "create token", path: "/create-token" },
-    // {
-    //   name: "Create Token",
-    //   isButton: true,
-    //   onClick: () => setIsModalOpen(true),
-    // },
+
   ];
 
   const formatPrice = (price) => {
@@ -148,27 +145,34 @@ export const Navbar = ({ amount = 120000 }) => {
 
               {isDropdownOpen && (
                 <div className="absolute top-[80px] right-0 w-full z-20 bg-sidebar h-screen  rounded-md shadow-md p-4">
-                  <div className="flex items-center justify-between w-full py-12">
-                    <Link href={"/profile"} onClick={() => setIsDropdownOpen(false)} className="text-2xl font-bold text-white">MY ACCOUNT</Link>
-                    <p className="text-xl text-primaryText">
-                      <IoIosClose onClick={toggleDropdown} />
-                    </p>
-                  </div>
+
                   <ul className="mt-2">
                     <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor">
-                      <Link href="/settings" onClick={toggleDropdown}>
-                        Settings
-                      </Link>
+                      <motion.div whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                        <Link href="/profile" onClick={toggleDropdown}>
+                          MY ACCOUNT
+                        </Link>
+                      </motion.div>
                       <ChevronRight size={30} />
                     </li>
                     <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor">
-                      <Link href="/goverance" onClick={toggleDropdown}>
-                        Governance
-                      </Link>
+                      <motion.div whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                        <Link href="/settings" onClick={toggleDropdown}>
+                          Settings
+                        </Link>
+                      </motion.div>
+                      <ChevronRight size={30} />
+                    </li>
+                    <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor">
+                      <motion.div whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                        <Link href="/goverance" onClick={toggleDropdown}>
+                          Governance
+                        </Link>
+                      </motion.div>
                       <ChevronRight size={30} />
                     </li>
                     <li className="py-6 border-b border-bordercolor text-[#646470] text-lg font-bold  flex items-center justify-between uppercase">
-                      <p className="relative">
+                      <p className="relative " >
                         Referral Program
                         <span className="absolute ml-2 -top-3 text-[10px] border border-[#646470] rounded-md px-1">
                           Soon
@@ -177,13 +181,14 @@ export const Navbar = ({ amount = 120000 }) => {
                       <ChevronRight size={30} />
                     </li>
                     <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor text-negative">
-                      <Link href="/logout" onClick={toggleDropdown}>
-                        Logout
-                      </Link>
+                      <motion.div whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                        <Link href="/logout" onClick={toggleDropdown}>
+                          Logout
+                        </Link>
+                      </motion.div>
                       <ChevronRight color="white" size={30} />
                     </li>
-                  </ul>
-                </div>
+                  </ul>                </div>
               )}
             </div>
           </div>
