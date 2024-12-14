@@ -10,9 +10,12 @@ import { FaXTwitter } from "react-icons/fa6";
 import { CiGlobe } from "react-icons/ci";
 import { SiAeromexico } from "react-icons/si";
 import Link from "next/link";
+import { FilterModal } from "../../components/ui/modals/FilterModal";
 
 export default function Page() {
   const [mavProtection, setMavProtection] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
   return (
     <div className="Container">
       <div className="innerContainer">
@@ -29,18 +32,20 @@ export default function Page() {
           <div className="primarybutton">
             <button
               onClick={() => setMavProtection(!mavProtection)}
-              className={`w-12 h-6 rounded-full p-1 transition-colors ${mavProtection ? "bg-secondaryText" : "bg-gray-600"
-                }`}
+              className={`w-12 h-6 rounded-full p-1 transition-colors ${
+                mavProtection ? "bg-secondaryText" : "bg-gray-600"
+              }`}
             >
               <div
-                className={`w-4 h-4 rounded-full bg-white transition-transform ${mavProtection ? "translate-x-6" : "translate-x-0"
-                  }`}
+                className={`w-4 h-4 rounded-full bg-white transition-transform ${
+                  mavProtection ? "translate-x-6" : "translate-x-0"
+                }`}
               />
             </button>
             <p>quick buy</p>
             <p className="flex items-center font-medium">
               <span className="pr-2 text-sm">
-                <img src="/Icon.svg" alt="i" className="h-4 w-4" />
+                <img src="/Icon.svg" alt="i" className="w-4 h-4" />
               </span>
               100
             </p>
@@ -53,18 +58,26 @@ export default function Page() {
           <Graduated />
         </div>
       </div>
+      <FilterModal
+        isOpen={isFilterOpen}
+        onClose={() => setIsFilterOpen(false)}
+      />
     </div>
   );
 }
 
 const NewlyCreated = ({ token }) => {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   return (
     <div className="flex flex-col w-full">
       <div className="flex items-center justify-between w-full px-4 py-6 bg-[#0F0F10] border border-bordercolor">
         {/* HEADER */}
 
         <p className="font-bold text-placeholderText"> NEWLY CREATED </p>
-        <div className="primarybutton">
+        <div
+          className="cursor-pointer primarybutton"
+          onClick={() => setIsFilterOpen(!isFilterOpen)}
+        >
           <RxMixerHorizontal size={20} />
           <p>filters</p>
         </div>
@@ -72,7 +85,10 @@ const NewlyCreated = ({ token }) => {
 
       <div className="bg-[#1D1D1E4D] py-4 px-4 border border-bordercolor">
         <div className="flex items-center justify-between px-1 gap-x-4">
-          <Link href={`/token/${token ? token?.id : 1}`} className="flex items-center gap-x-3">
+          <Link
+            href={`/token/${token ? token?.id : 1}`}
+            className="flex items-center gap-x-3"
+          >
             <div className="rounded-full w-14 h-14 bg-neutral-100">
               <img
                 src={"https://via.placeholder.com/150"}
@@ -128,7 +144,7 @@ const NewlyCreated = ({ token }) => {
           <div className="flex flex-col items-end gap-y-2">
             <div className="flex flex-row w-full">
               <button className="flex w-full gap-1 px-10 py-2 font-bold rounded-md bg-secondaryText">
-                <img className="mt-1 h-4 w-4 " src="/Icon.svg" alt="i" /> 100
+                <img className="w-4 h-4 mt-1 " src="/Icon.svg" alt="i" /> 100
               </button>
             </div>
             <div className="flex items-center gap-x-2">
@@ -146,17 +162,26 @@ const NewlyCreated = ({ token }) => {
           </div>
         </div>
       </div>
+      <FilterModal
+        isOpen={isFilterOpen}
+        onClose={() => setIsFilterOpen(false)}
+      />
     </div>
   );
 };
 const AboutToGraduate = ({ token }) => {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
   return (
     <div className="flex flex-col w-full">
       <div className="flex items-center justify-between w-full px-4 py-6 bg-[#0F0F10] border border-bordercolor">
         {/* HEADER */}
 
         <p className="font-bold text-placeholderText"> NEWLY CREATED </p>
-        <div className="primarybutton">
+        <div
+          className="cursor-pointer primarybutton"
+          onClick={() => setIsFilterOpen(!isFilterOpen)}
+        >
           <RxMixerHorizontal size={20} />
           <p>filters</p>
         </div>
@@ -164,7 +189,10 @@ const AboutToGraduate = ({ token }) => {
 
       <div className="bg-[#1D1D1E4D] py-4 px-4  border border-bordercolor">
         <div className="flex items-center justify-between px-1 gap-x-4">
-          <Link href={`/token/${token ? token?.id : 1}`} className="flex items-center gap-x-3">
+          <Link
+            href={`/token/${token ? token?.id : 1}`}
+            className="flex items-center gap-x-3"
+          >
             <div className="rounded-full w-14 h-14 bg-neutral-100">
               <img
                 src={"https://via.placeholder.com/150"}
@@ -220,7 +248,7 @@ const AboutToGraduate = ({ token }) => {
           <div className="flex flex-col items-end gap-y-2">
             <div className="flex flex-row w-full">
               <button className="flex w-full gap-1 px-10 py-2 font-bold rounded-md bg-secondaryText">
-                <img className="mt-1 h-4 w-4" src="/Icon.svg" alt="i" />
+                <img className="w-4 h-4 mt-1" src="/Icon.svg" alt="i" />
                 100
               </button>
             </div>
@@ -239,17 +267,26 @@ const AboutToGraduate = ({ token }) => {
           </div>
         </div>
       </div>
+      <FilterModal
+        isOpen={isFilterOpen}
+        onClose={() => setIsFilterOpen(false)}
+      />
     </div>
   );
 };
 const Graduated = ({ token }) => {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
   return (
     <div className="flex flex-col w-full">
       <div className="flex items-center justify-between w-full px-4 py-6 bg-[#0F0F10] border border-bordercolor">
         {/* HEADER */}
 
         <p className="font-bold text-placeholderText"> NEWLY CREATED </p>
-        <div className="primarybutton">
+        <div
+          className="cursor-pointer primarybutton"
+          onClick={() => setIsFilterOpen(!isFilterOpen)}
+        >
           <RxMixerHorizontal size={20} />
           <p>filters</p>
         </div>
@@ -257,7 +294,10 @@ const Graduated = ({ token }) => {
 
       <div className="bg-[#1D1D1E4D] py-4  px-4 border border-bordercolor">
         <div className="flex items-center justify-between px-1 gap-x-4">
-          <Link href={`/token/${token ? token?.id : 1}`} className="flex items-center gap-x-3">
+          <Link
+            href={`/token/${token ? token?.id : 1}`}
+            className="flex items-center gap-x-3"
+          >
             <div className="rounded-full w-14 h-14 bg-neutral-100">
               <img
                 src={"https://via.placeholder.com/150"}
@@ -313,7 +353,7 @@ const Graduated = ({ token }) => {
           <div className="flex flex-col items-end gap-y-2">
             <div className="flex flex-row w-full">
               <button className="flex w-full gap-1 px-10 py-2 font-bold rounded-md bg-secondaryText">
-                <img className="mt-1 h-4 w-4" src="/Icon.svg" alt="i" />
+                <img className="w-4 h-4 mt-1" src="/Icon.svg" alt="i" />
                 100
               </button>
             </div>
@@ -332,6 +372,10 @@ const Graduated = ({ token }) => {
           </div>
         </div>
       </div>
+      <FilterModal
+        isOpen={isFilterOpen}
+        onClose={() => setIsFilterOpen(false)}
+      />
     </div>
   );
 };

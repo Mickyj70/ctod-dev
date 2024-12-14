@@ -1,10 +1,12 @@
 "use client";
-import React from "react";
+import { useState } from "react";
 import { RxMixerHorizontal } from "react-icons/rx";
 import { Table } from "../../components/ui/table/table";
 import { GoPerson } from "react-icons/go";
 import { BiTargetLock } from "react-icons/bi";
+import { FilterModal } from "../../components/ui/modals/FilterModal";
 export default function Page() {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const handleFavoriteToggle = (index, isFavorited) => {
     console.log(
       `Token ${index} is ${isFavorited ? "favorited" : "unfavorited"}`
@@ -206,7 +208,10 @@ export default function Page() {
         </div>
 
         <div className="flex items-center justify-between w-full ">
-          <div className="primarybutton">
+          <div
+            className="cursor-pointer primarybutton"
+            onClick={() => setIsFilterOpen(!isFilterOpen)}
+          >
             <RxMixerHorizontal size={20} />
             <p>filters</p>
           </div>
@@ -232,6 +237,10 @@ export default function Page() {
           />
         </div>
       </div>
+      <FilterModal
+        isOpen={isFilterOpen}
+        onClose={() => setIsFilterOpen(false)}
+      />
     </div>
   );
 }
