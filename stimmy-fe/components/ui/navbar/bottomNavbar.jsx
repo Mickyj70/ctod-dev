@@ -3,7 +3,7 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { LuMessagesSquare } from "react-icons/lu";
 import { useState } from "react";
-
+import { Chatpopup } from "../chat/chatpopup";
 export default function BottomNavbar() {
   const [popChat, setPopChat] = useState(false);
 
@@ -47,29 +47,7 @@ export default function BottomNavbar() {
 
       {/* Right Section: Governance and Global Chat */}
       {popChat && (
-        <div className="fixed bottom-10 right-6 w-96 h-[500px] bg-background border border-bordercolor rounded-t-lg shadow-lg">
-          <div className="flex items-center justify-between p-4 border-b border-bordercolor">
-            <h2 className="font-bold text-primaryText">GLOBAL CHAT</h2>
-            <AiOutlineClose
-              size={20}
-              className="transition-colors cursor-pointer text-primaryText hover:text-white"
-              onClick={handleChatClick}
-            />
-          </div>
-          <div className="h-[calc(100%-116px)] overflow-y-auto p-4">
-            {/* Chat messages will go here */}
-          </div>
-          <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-bordercolor">
-            <input
-              type="text"
-              placeholder="Type your message..."
-              className="flex-1 w-4/6 p-2 bg-transparent border-l rounded-l border-y border-bordercolor focus:outline-none focus:border-primaryText text-primaryText"
-            />
-            <button className="w-4/12 px-4 py-2 font-bold text-white uppercase border rounded rounded-r border-bordercolor bg-secondaryText">
-              Send
-            </button>
-          </div>
-        </div>
+        <Chatpopup handleChatClick={handleChatClick} />
       )}
     </div>
   );
