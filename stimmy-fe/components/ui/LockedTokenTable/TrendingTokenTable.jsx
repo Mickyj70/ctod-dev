@@ -7,10 +7,10 @@ import Link from "next/link";
 
 const TrendingTokenTable = ({ tokens, isQuickBuy }) => {
   return (
-    <div className="p-6 overflow-x-auto text-white rounded-lg shadow-md ">
+    <div className="p-2 md:p-6 overflow-x-auto text-white rounded-lg shadow-md ">
       <table className="w-full table-auto text-left min-w-[800px]">
         <thead>
-          <tr className="uppercase text-placeholderText">
+          <tr className="uppercase text-placeholderText text-xs md:text-sm lg:text-base ">
             <th className="p-3 font-bold">Token Info</th>
             <th className="p-3 font-bold">Created</th>
             <th className="p-3 font-bold">MKT CAP</th>
@@ -31,7 +31,7 @@ const TrendingTokenTable = ({ tokens, isQuickBuy }) => {
               key={index}
               className="border-b border-bordercolor hover:bg-bordercolor/20 transition-colors bg-[#1D1D1E4D] w-full"
             >
-              <td className="p-3">
+              <td className="p-3 text-xs md:text-sm lg:text-base ">
                 <Link href={`/token/${token.id}`} className="flex flex-col">
                   <span className="font-medium">{token.name}</span>
                   <span className="text-placeholderText text-sm truncate max-w-[200px] flex items-center gap-x-2">
@@ -51,40 +51,40 @@ const TrendingTokenTable = ({ tokens, isQuickBuy }) => {
                 </Link>
               </td>
               <td className="p-3">
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 text-xs md:text-sm lg:text-base ">
                   <span className="flex items-center gap-x-2">
                     <Clock size={14} /> {token?.created}
                   </span>
                 </div>
               </td>
-              <td className="p-3 font-mono text-positive">{token.mtk_cap}</td>
-              <td className="p-3 font-medium">
+              <td className="p-3 font-mono text-positive text-xs md:text-sm lg:text-base ">{token.mtk_cap}</td>
+              <td className="p-1 md:p-3 font-medium text-xs md:text-sm lg:text-base ">
                 {token.liquidity}
                 <span className="text-placeholderText">
-                  / {token.liquidity}
+                  {" / "} {token.liquidity}
                 </span>
               </td>
-              <td className="p-3 font-mono">
-                <div className="flex flex-col items-start">
+              <td className="p-3  text-sm md:text-base font-mono">
+                <div className="flex flex-col items-start text-xs md:text-sm lg:text-base ">
                   <p>{token.txns}</p>
-                  <span className="text-positive">
+                  <span className="text-positive flex md:block">
                     {token.txns} <span className="text-placeholderText">/</span>{" "}
                     <span className="text-negative">{token.txns}</span>{" "}
                   </span>
                 </div>
               </td>
 
-              <td className="p-3 font-bold text-negative">{token.volume}</td>
-              <td className="p-3 font-bold text-positive">{token.m1}</td>
-              <td className="p-3 font-bold text-positive">{token.m5}</td>
-              <td className="p-3 font-bold text-positive">{token.m30}</td>
-              <td className="p-3 font-bold text-positive">{token.m1h}</td>
-              <td className="p-3 font-bold text-positive">
+              <td className="p-3 font-bold text-negative text-xs md:text-sm lg:text-base ">{token.volume}</td>
+              <td className="p-3 font-bold text-positive text-xs md:text-sm lg:text-base ">{token.m1}</td>
+              <td className="p-3 font-bold text-positive text-xs md:text-sm lg:text-base ">{token.m5}</td>
+              <td className="p-3 font-bold text-positive text-xs md:text-sm lg:text-base ">{token.m30}</td>
+              <td className="p-3 font-bold text-positive text-xs md:text-sm lg:text-base ">{token.m1h}</td>
+              <td className="p-3 font-bold text-positive text-xs md:text-sm lg:text-base ">
                 {token.additional_info}
               </td>
 
               {isQuickBuy && (
-                <td className="p-3">
+                <td className="p-3 ">
                   <div className="flex flex-wrap gap-2">
                     {token?.quickbuy?.map((action, idx) => (
                       <button
@@ -92,10 +92,10 @@ const TrendingTokenTable = ({ tokens, isQuickBuy }) => {
                         className={`${action.type === "primary"
                           ? "bg-secondaryText hover:bg-secondaryText/80"
                           : "bg-placeholderText hover:bg-placeholderText/60"
-                          } px-10 py-3 rounded-md text-base font-medium transition-colors`}
+                          } px-5 md:px-10 py-3 rounded-md text-base font-medium transition-colors flex items-center justify-center gap-x-2 text-xs md:text-sm lg:text-base `}
                         onClick={action.onClick}
                       >
-                        <img src="/Icon.svg" alt="i" /> {action.label}
+                        <img src="/Icon.svg" alt="i" className="h-4 w-4" /> {action.label}
                       </button>
                     ))}
                   </div>

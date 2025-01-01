@@ -15,9 +15,11 @@ import { FilterModal } from "../../components/ui/modals/FilterModal";
 export default function Page() {
   const [mavProtection, setMavProtection] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [activeView, setActiveView] = useState("newly"); // newly, about, graduated
+
 
   return (
-    <div className="Container">
+    <div className="Container overflow-hidden ">
       <div className="innerContainer">
         {/* header */}
         <div className="">
@@ -28,34 +30,60 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="flex items-center justify-between w-full ">
-          <div className="primarybutton">
+        <div className="flex flex-col md:flex-row items-start justify-between w-full ">
+          <div className="flex w-full gap-2 mb-4 xl:hidden">
+            <button
+              onClick={() => setActiveView("newly")}
+              className={`primarybutton text-xs ${activeView === "newly" ? "bg-secondaryText" : "bg-neutral-900"}`}
+            >
+              Newly Created
+            </button>
+            <button
+              onClick={() => setActiveView("about")}
+              className={`primarybutton text-xs ${activeView === "about" ? "bg-secondaryText" : "bg-neutral-900"}`}
+            >
+              About to Graduate
+            </button>
+            <button
+              onClick={() => setActiveView("graduated")}
+              className={`primarybutton text-xs ${activeView === "graduated" ? "bg-secondaryText" : "bg-neutral-900"}`}
+            >
+              Graduated
+            </button>
+          </div>
+          <div className="primarybutton min-w-fit ">
             <button
               onClick={() => setMavProtection(!mavProtection)}
-              className={`w-12 h-6 rounded-full p-1 transition-colors ${
-                mavProtection ? "bg-secondaryText" : "bg-gray-600"
-              }`}
+              className={`w-8 h-6 rounded-full p-1 transition-colors ${mavProtection ? "bg-secondaryText" : "bg-gray-600"
+                }`}
             >
               <div
-                className={`w-4 h-4 rounded-full bg-white transition-transform ${
-                  mavProtection ? "translate-x-6" : "translate-x-0"
-                }`}
+                className={`w-4 h-4 rounded-full bg-white transition-transform ${mavProtection ? "translate-x-6" : "translate-x-0"
+                  }`}
               />
             </button>
-            <p>quick buy</p>
-            <p className="flex items-center font-medium">
+
+
+            <p className="text-xs md:text-[12px]">quick buy</p>
+            {/* <p className="md:flex items-center font-medium hidden">
               <span className="pr-2 text-sm">
                 <img src="/Icon.svg" alt="i" className="w-4 h-4" />
               </span>
               100
-            </p>
+            </p> */}
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-4">
+        <div className="hidden xl:grid xl:grid-cols-3 gap-4">
           <NewlyCreated />
           <AboutToGraduate />
           <Graduated />
+        </div>
+
+        <div className="xl:hidden">
+          {activeView === "newly" && <NewlyCreated />}
+          {activeView === "about" && <AboutToGraduate />}
+          {activeView === "graduated" && <Graduated />}
         </div>
       </div>
       <FilterModal
@@ -73,7 +101,7 @@ const NewlyCreated = ({ token }) => {
       <div className="flex items-center justify-between w-full px-4 py-6 bg-[#0F0F10] border border-bordercolor">
         {/* HEADER */}
 
-        <p className="font-bold text-placeholderText"> NEWLY CREATED </p>
+        <p className="font-bold text-placeholderTex text-xs md:text-sm lg:text-base "> NEWLY CREATED </p>
         <div
           className="cursor-pointer primarybutton"
           onClick={() => setIsFilterOpen(!isFilterOpen)}
@@ -89,7 +117,7 @@ const NewlyCreated = ({ token }) => {
             href={`/token/${token ? token?.id : 1}`}
             className="flex items-center gap-x-3"
           >
-            <div className="rounded-full w-14 h-14 bg-neutral-100">
+            <div className="rounded-full w-10 h-10 lg:w-12 lg:h-12 bg-neutral-100">
               <img
                 src={"https://via.placeholder.com/150"}
                 alt="img"
@@ -177,7 +205,7 @@ const AboutToGraduate = ({ token }) => {
       <div className="flex items-center justify-between w-full px-4 py-6 bg-[#0F0F10] border border-bordercolor">
         {/* HEADER */}
 
-        <p className="font-bold text-placeholderText"> NEWLY CREATED </p>
+        <p className="font-bold text-placeholderText text-xs md:text-sm lg:text-base "> ABOUT TO GRADUATE </p>
         <div
           className="cursor-pointer primarybutton"
           onClick={() => setIsFilterOpen(!isFilterOpen)}
@@ -193,7 +221,7 @@ const AboutToGraduate = ({ token }) => {
             href={`/token/${token ? token?.id : 1}`}
             className="flex items-center gap-x-3"
           >
-            <div className="rounded-full w-14 h-14 bg-neutral-100">
+            <div className="rounded-full w-10 h-10 lg:w-12 lg:h-12 bg-neutral-100">
               <img
                 src={"https://via.placeholder.com/150"}
                 alt="img"
@@ -282,7 +310,7 @@ const Graduated = ({ token }) => {
       <div className="flex items-center justify-between w-full px-4 py-6 bg-[#0F0F10] border border-bordercolor">
         {/* HEADER */}
 
-        <p className="font-bold text-placeholderText"> NEWLY CREATED </p>
+        <p className="font-bold text-placeholderText text-xs md:text-sm lg:text-base "> GRADUATED </p>
         <div
           className="cursor-pointer primarybutton"
           onClick={() => setIsFilterOpen(!isFilterOpen)}
@@ -298,7 +326,7 @@ const Graduated = ({ token }) => {
             href={`/token/${token ? token?.id : 1}`}
             className="flex items-center gap-x-3"
           >
-            <div className="rounded-full w-14 h-14 bg-neutral-100">
+            <div className="rounded-full w-10 h-10 lg:w-12 lg:h-12 bg-neutral-100">
               <img
                 src={"https://via.placeholder.com/150"}
                 alt="img"

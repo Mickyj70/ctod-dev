@@ -81,10 +81,10 @@ export default function Settings() {
         );
       case "profile":
         return (
-          <div className="flex gap-4 p-4">
+          <div className="flex flex-col-reverse md:flex-row gap-4 px-1 md:p-4">
             {/* Left side - Form */}
             <form
-              className="w-8/12 mb-[90px] border border-bordercolor"
+              className="w-full md:w-8/12 mb-[90px] border border-bordercolor"
               onSubmit={handleSubmit}
             >
               <div className="px-5 py-7">
@@ -207,7 +207,7 @@ export default function Settings() {
             </form>
 
             {/* Right side - Preview */}
-            <div className="w-1/3 h-full">
+            <div className="w-full md:w-1/3 h-full">
               <div className="border border-bordercolor">
                 <div className="flex flex-col gap-2 px-5 py-7">
                   <h2 className="text-xl font-bold">WHAT IS SLIPPAGE?</h2>

@@ -56,30 +56,30 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="flex items-center justify-between w-full ">
-          <div className="flex items-center gap-x-3">
-            <div className="flex-col px-6 primarybutton gap-y-1">
+        <div className="flex items-center justify-between w-full flex-wrap gap-y-3 ">
+          <div className="flex flex-wrap w-full  md:w-fit gap-y-3 items-center gap-x-3">
+            <div className="flex-col px-2 md:px-6 text-xs md:text-sm lg:text-base primarybutton gap-y-1">
               <p>INVESTED</p>
               <p className="flex items-center w-full gap-x-1">
                 {" "}
                 <span className="text-xs"><img src="/Icon.svg" alt="" className="h-4 w-4" /></span> 100k
               </p>
             </div>
-            <div className="flex-col px-6 primarybutton gap-y-1">
+            <div className="flex-col px-2 md:px-6 text-xs md:text-sm lg:text-base primarybutton gap-y-1">
               <p>REMAINING</p>
               <p className="flex items-center w-full gap-x-1">
                 {" "}
                 <span className="text-xs"><img src="/Icon.svg" alt="" className="h-4 w-4" /></span> 50k
               </p>
             </div>
-            <div className="flex-col px-6 primarybutton gap-y-1 ">
+            <div className="flex-col px-2 md:px-6 text-xs md:text-sm lg:text-base primarybutton gap-y-1 ">
               <p className="w-full">SOLD</p>
               <p className="flex items-start w-full gap-x-1">
 
                 <span className="text-xs"><img src="/Icon.svg" alt="" className="h-4 w-4" /></span> 50k
               </p>
             </div>
-            <div className="flex-col px-6 primarybutton gap-y-1">
+            <div className="flex-col px-2 md:px-6 text-xs md:text-sm lg:text-base primarybutton gap-y-1">
               <p>CHANGE IN P&L</p>
               <p className="w-full text-positive">{"10.04%"}</p>
             </div>
@@ -94,11 +94,11 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between w-full ">
-          <div className="flex items-center gap-x-3 w-fit">
+        <div className="flex flex-col md:flex-row items-start md:items-center  justify-between w-full gap-x-2 gap-y-2 ">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-x-3 gap-y-3 w-full md:w-fit ">
             <div className="h-12 primarybutton">
               <RxMixerHorizontal size={20} />
-              <p>filters</p>
+              <p className="text-xs md:text-base">filters</p>
             </div>
 
             <div className="flex items-center w-full h-12 px-3 py-2 border rounded-md bg-sidebar border-bordercolor gap-x-3">
@@ -111,7 +111,7 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="flex items-center gap-x-3 ">
+          <div className="flex items-center gap-x-3 w-full md:w-fit">
             <div className="flex items-center w-full h-12 px-3 py-2 border rounded-md bg-sidebar border-bordercolor gap-x-3">
 
               <input
@@ -121,10 +121,10 @@ export default function Page() {
               />
             </div>
 
-            <div className="w-8/12 h-12 primarybutton ">
+            {/* <div className="w-8/12 h-12 primarybutton ">
               <RefreshCw size={18} />
               <p className="capitalize">Refresh P&L</p>
-            </div>
+            </div> */}
           </div>
         </div>
 

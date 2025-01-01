@@ -95,17 +95,17 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="flex items-center justify-between w-full ">
-          <div className="flex items-center gap-x-3">
-            <div className="primarybutton">
+        <div className="flex items-center justify-between w-full flex-wrap ">
+          <div className="flex items-center gap-x-3 ">
+            <div className="primarybutton ">
               <Clock size={20} />
               <p>1m</p>
             </div>
-            <div className="primarybutton">
+            <div className="hidden md:primarybutton">
               <Clock size={20} />
               <p>5m</p>
             </div>
-            <div className="primarybutton">
+            <div className="hidden md:primarybutton">
               <Clock size={20} />
               <p>30m</p>
             </div>
@@ -130,7 +130,7 @@ export default function Page() {
               />
             </button>
             <p>quick buy</p>
-            <p className="flex items-center font-medium">
+            <p className="hidden md:flex items-center font-medium">
               <span className="pr-2 text-sm">
                 <img src="/Icon.svg" alt="" className="h-4 w-4" />
               </span>

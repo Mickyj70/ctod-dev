@@ -22,12 +22,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`w-full`} suppressHydrationWarning>
+      <body suppressHydrationWarning={true}>
+        <Navbar />
         <div className="min-h-[calc(97vh-130px)] relative">
-          <Navbar />
           <CustomProvider theme="dark">{children}</CustomProvider>
-          <BottomNavbar />
         </div>
+        <BottomNavbar />
       </body>
     </html>
   );

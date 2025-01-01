@@ -58,8 +58,7 @@ export const Navbar = ({ amount = 120000 }) => {
   const coinData = [
     { name: "BTC", price: formatPrice(100000) },
     { name: "ETH", price: formatPrice(100000) },
-    { name: "SOL", price: formatPrice(100000) },
-    { name: "BNB", price: formatPrice(100000) },
+
   ];
 
   const router = useRouter();
@@ -72,10 +71,11 @@ export const Navbar = ({ amount = 120000 }) => {
     <>
       <div className="h-[130px] border-b border-bordercolor">
         <div className="flex h-[95px] gap-x-4 border-b border-bordercolor items-center w-full">
-          <div className="px-9">
-            <p className="text-3xl font-extrabold">stimmy</p>
+          <div className="px-4 md:px-9">
+            <p className="text-xl md:text-3xl font-extrabold">stimmy</p>
           </div>
-          <div className="flex items-center h-full px-8 gap-x-8 border-x border-bordercolor">
+          {/* nav links */}
+          <div className="hidden lg:flex items-center h-full px-4 xl:px-6 gap-x-3 xl:gap-x-6 border-x border-bordercolor">
             {data.map((item, index) =>
               !item.isButton ? (
                 <Link href={item.path} key={index}>
@@ -94,9 +94,11 @@ export const Navbar = ({ amount = 120000 }) => {
               )
             )}
           </div>
+
           <div className="flex items-center justify-between flex-1 h-full">
+            {/* search component */}
             <div
-              className="relative flex items-center justify-center flex-1 w-full h-full px-3 py-2"
+              className="relative hidden md:flex items-center justify-center flex-1 w-full h-full px-3 py-2"
               ref={searchDropdownRef}
             >
               <div
@@ -118,14 +120,15 @@ export const Navbar = ({ amount = 120000 }) => {
                 </div>
               )}
             </div>
-            <div className="relative flex items-center justify-between flex-1 w-full h-full px-6 gap-x-3 bg-sidebar">
+            {/* user profile */}
+            <div className="relative flex items-center justify-between flex-1 w-full h-full px-4 sm:px-6 gap-x-3 bg-sidebar">
               <div className="flex items-center gap-x-4">
                 <div
                   onClick={handleProfile}
-                  className="w-12 h-12 bg-white rounded-full cursor-pointer"
+                  className="w-9 sm:w-12 h-9 sm:h-12 bg-white rounded-full cursor-pointer"
                 ></div>
                 <div className="flex flex-col">
-                  <p className="text-xl font-bold">0x00000000</p>
+                  <p className="text-lg sm:text-xl font-bold">0x00000000</p>
                   <div className="flex flex-row w-full ">
                     <p className="flex items-center gap-x-2 text-sm font-bold text-fadedText">
                       BALANCE
@@ -138,7 +141,7 @@ export const Navbar = ({ amount = 120000 }) => {
                 </div>
               </div>
               <div onClick={toggleDropdown} className="cursor-pointer">
-                <IoChevronDownOutline size={35} />
+                <IoChevronDownOutline className="text-2xl md:text-4xl " />
               </div>
 
               {/* Dropdown */}
@@ -146,7 +149,46 @@ export const Navbar = ({ amount = 120000 }) => {
               {isDropdownOpen && (
                 <div className="absolute top-[80px] right-0 w-full z-20 bg-sidebar h-screen  rounded-md shadow-md p-4">
 
-                  <ul className="mt-2">
+                  <div className="w-full">
+                    <div
+                      className="relative flex md:hidden items-center justify-center flex-1 w-full h-full border border-bordercolor py-2"
+                      ref={searchDropdownRef}
+                    >
+                      <div
+                        onClick={toggleSearchDropdown}
+                        className="flex items-center w-full h-8 px-3 py-2 rounded-lg cursor-pointer bg-sidebar gap-x-3"
+                      >
+                        <img src="/search_icon.svg" alt="" className="h-5 w-5" />
+                        <input
+                          type="text"
+                          placeholder="search by token or lp contract "
+                          className="w-full h-full text-sm font-bold uppercase outline-none bg-sidebar placeholder:text-placeholderText"
+                          onClick={(e) => e.stopPropagation()}
+                        />
+                      </div>
+                      {isSearchDropdownOpen && (
+                        <div className="absolute min-h-[200px] w-full left-0 z-5 text-center mt-1 rounded-md shadow-lg top-full bg-sidebar">
+                          {/* Dropdown content here */}
+                          no messages
+                        </div>
+                      )}
+                    </div>
+
+                    {data.map((item, index) =>
+                      !item.isButton && <li key={index} className="flex items-center justify-between py-4 text-lg font-bold uppercase border-b border-bordercolor lg:hidden">
+                        <motion.div whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                          <Link href={item.path} onClick={toggleDropdown}>
+                            {item.name}
+                          </Link>
+                        </motion.div>
+                        <ChevronRight size={30} />
+                      </li>
+                    )
+                    }
+
+                  </div>
+
+                  <ul className="mt-0 sm:mt-2">
                     <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor">
                       <motion.div whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
                         <Link href="/profile" onClick={toggleDropdown}>
@@ -193,18 +235,18 @@ export const Navbar = ({ amount = 120000 }) => {
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-x-4 py-1 px-7 w-full h-[35px]">
-          <p className="flex items-center h-full px-3 font-bold uppercase border-r gap-x-2 text-primaryText border-bordercolor">
+        <div className="flex items-center gap-x-4 py-1 px-4 w-full h-[35px]">
+          <div className="flex items-center h-full px-3 font-bold uppercase border-r gap-x-2 text-primaryText border-bordercolor">
             <span>
               <TiStarOutline size={20} />
             </span>
-            Watching
-          </p>
-          <div className="flex items-center gap-x-4 ">
+            <span> Watching</span>
+          </div>
+          <div className="sm:flex items-center gap-x-3 hidden">
             {coinData.map((item, index) => (
               <div
                 key={index}
-                className="flex items-center h-full px-6 border-r gap-x-2 border-bordercolor"
+                className="flex items-center h-full px-3 py-2 border-r gap-x-2 border-bordercolor"
               >
                 <p
                   key={index}

@@ -41,7 +41,7 @@ export function Table({
 
   return (
     <div className={`w-full text-white p-4 ${className}`}>
-      <table className="w-full border-separate border-spacing-y-2">
+      <table className="w-full border-separate border-spacing-y-1 md:border-spacing-y-2 ">
         <TableHeader columns={columns} showQuickBuy={showQuickBuy} />
         <tbody className="bg-[#1D1D1E4D]">
           {data.map((item, index) => (

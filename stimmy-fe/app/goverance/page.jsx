@@ -95,8 +95,8 @@ function LockAndEarn({ setLockData }) {
           </div>
         </div>
 
-        <div className="flex items-start w-full gap-x-4">
-          <div className="w-7/12 px-3 py-6 border border-bordercolor min-h-96">
+        <div className="flex flex-col-reverse gap-y-2 md:flex-row items-start w-full gap-x-4  pb-16 md:pb-0">
+          <div className="w-full md:w-7/12 px-3 py-6 border border-bordercolor min-h-96">
             <p className="font-bold">AMOUNT TO LOCK</p>
 
             <div className="flex items-end w-full gap-x-4">
@@ -185,7 +185,7 @@ function LockAndEarn({ setLockData }) {
             </div>
           </div>
 
-          <div className="w-5/12 px-5 py-4 border border-bordercolor min-h-80">
+          <div className="w-full md:w-5/12 px-5 py-2 md:py-4 border border-bordercolor min-h-56 md:min-h-80">
             <p className="py-2 pl-5 font-bold">NEW LOCK</p>
             <div className="flex justify-start w-full">
               <Timeline

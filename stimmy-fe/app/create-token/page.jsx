@@ -30,7 +30,7 @@ export default function CreateTokenPage() {
   };
   return (
     <div className="Container">
-      <div className="innerContainer ">
+      <div className="innerContainer mb-14 md:mb-0">
         {/* header */}
         <div className="mb-4">
           <p className="header">CREATE TOKEN</p>
@@ -39,11 +39,11 @@ export default function CreateTokenPage() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
-        <div className="flex gap-4">
+        <div className="flex flex-col md:flex-row gap-y-2 md:gap-4">
           {/* Left side - Form */}
           <form
             onSubmit={handleSubmit}
-            className="w-8/12 mb-[90px] border border-bordercolor"
+            className="w-full md:w-8/12  md:mb-[90px] border border-bordercolor"
           >
             <div className="px-5 py-7">
               <div className="mb-3">
@@ -177,7 +177,7 @@ export default function CreateTokenPage() {
           </form>
 
           {/* Right side - Preview */}
-          <div className="w-1/3 h-full">
+          <div className="w-full md:w-1/3 h-full">
             <div className="border border-bordercolor">
               <div className="px-5 py-7">
                 <div className="mb-3">

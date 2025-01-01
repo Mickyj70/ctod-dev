@@ -11,7 +11,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 
 const CandlestickChart = dynamic(
-  () => import("../../../components/ui/cancle/candleStickChart"),
+  () => import("../../../components/ui/cancle/candleStickChartComponent"),
   { ssr: false }
 );
 
@@ -23,38 +23,21 @@ const ChartToolbar = dynamic(
 const TokenDetail = () => {
   const { id } = useParams();
   const data = [
-    { time: "2023-01-01T00:00:00", open: 6.5, close: 7.0, high: 7.5, low: 6.0 },
-    { time: "2023-01-02T00:00:00", open: 7.0, close: 6.8, high: 7.2, low: 6.5 },
-    { time: "2023-01-03T00:00:00", open: 6.8, close: 7.2, high: 7.3, low: 6.7 },
-    { time: "2023-01-04T00:00:00", open: 7.2, close: 7.4, high: 7.6, low: 7.1 },
-    { time: "2023-01-05T00:00:00", open: 7.4, close: 7.3, high: 7.5, low: 7.2 },
-    { time: "2023-01-06T00:00:00", open: 7.3, close: 7.5, high: 7.7, low: 7.2 },
-    { time: "2023-01-07T00:00:00", open: 7.5, close: 7.6, high: 7.8, low: 7.4 },
-    { time: "2023-01-08T00:00:00", open: 7.6, close: 7.7, high: 7.9, low: 7.5 },
-    { time: "2023-01-09T00:00:00", open: 7.7, close: 7.8, high: 8.0, low: 7.6 },
-    { time: "2023-01-10T00:00:00", open: 7.8, close: 7.9, high: 8.1, low: 7.7 },
-    { time: "2023-01-11T00:00:00", open: 7.9, close: 8.0, high: 8.2, low: 7.8 },
-    { time: "2023-01-12T00:00:00", open: 8.0, close: 8.1, high: 8.3, low: 7.9 },
-    { time: "2023-01-13T00:00:00", open: 8.1, close: 8.2, high: 8.4, low: 8.0 },
-    { time: "2023-01-14T00:00:00", open: 8.2, close: 8.3, high: 8.5, low: 8.1 },
-    { time: "2023-01-15T00:00:00", open: 8.3, close: 8.4, high: 8.6, low: 8.2 },
-    { time: "2023-01-16T00:00:00", open: 8.4, close: 8.5, high: 8.7, low: 8.3 },
-    { time: "2023-01-17T00:00:00", open: 8.5, close: 8.6, high: 8.8, low: 8.4 },
-    { time: "2023-01-18T00:00:00", open: 8.6, close: 8.7, high: 8.9, low: 8.5 },
-    { time: "2023-01-19T00:00:00", open: 8.7, close: 8.8, high: 9.0, low: 8.6 },
-    { time: "2023-01-20T00:00:00", open: 8.8, close: 8.9, high: 9.1, low: 8.7 },
-    { time: "2023-01-21T00:00:00", open: 8.9, close: 9.0, high: 9.2, low: 8.8 },
-    { time: "2023-01-22T00:00:00", open: 9.0, close: 9.1, high: 9.3, low: 8.9 },
-    { time: "2023-01-23T00:00:00", open: 9.1, close: 9.2, high: 9.4, low: 9.0 },
-    { time: "2023-01-24T00:00:00", open: 9.2, close: 9.3, high: 9.5, low: 9.1 },
-    { time: "2023-01-25T00:00:00", open: 9.3, close: 9.4, high: 9.6, low: 9.2 },
-    { time: "2023-01-26T00:00:00", open: 9.4, close: 9.5, high: 9.7, low: 9.3 },
+    {
+      time: '2023-01-01',
+      open: 100,
+      high: 105,
+      low: 95,
+      close: 102,
+      volume: 1000
+    },
+    // ... more data points
   ];
   // Convert time to UNIX timestamp for Lightweight Charts
-  const processedData = data.map((item) => ({
+  const processedData = data?.map((item) => ({
     ...item,
-    time: Math.floor(new Date(item.time).getTime() / 1000),
-  }));
+    time: new Date(item.time).getTime() / 1000,
+  })) || [];
 
   const [activeTab, setActiveTab] = useState("buy");
   const [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
@@ -70,20 +53,20 @@ const TokenDetail = () => {
 
   return (
     <div className="Container">
-      <div className="min-h-screen pb-10 innerContainer">
-        <div className="flex w-full px-10 gap-x-5">
-          <div className="flex flex-col w-9/12 h-full gap-y-5">
+      <div className="min-h-screen pb-5 md:pb-10 innerContainer relative">
+        <div className="flex flex-col w-full h-full px-0 md:px-10 gap-y-5 md:gap-x-5 overflow-hidden relative">
+          <div className="flex flex-col w-full md:w-9/12 h-full gap-y-5">
             <div className="flex flex-col w-full ">
               <ChartToolbar />
-              <CandlestickChart data={processedData} />
+              <CandlestickChart data={processedData} className={"h-[320px] md:h-[540px]"} />
             </div>
 
-            <div className="w-full">
+            <div className="w-full h-full">
               <TradesAndThreads />
             </div>
           </div>
 
-          <div className="flex flex-col w-3/12 max-h-screen overflow-y-scroll  gap-y-5">
+          <div className="flex flex-col w-full md:w-3/12 max-h-screen overflow-y-scroll  gap-y-5 pb-10 md:pb-1">
             {/* first section */}
             <section className="flex flex-col items-center border rounded-md border-bordercolor">
               <div className="flex items-start w-11/12 py-4 gap-x-3">
@@ -449,7 +432,13 @@ const TokenDetail = () => {
 
 
           </div>
+
         </div>
+        {/* <div className="h-12 w-full flex justify-center  fixed bottom-14">
+          <div className="bg-secondaryText px-8 py-2 h-fit text-center rounded-lg text-lg ">
+            Trade
+          </div>
+        </div> */}
       </div>
     </div>
   );

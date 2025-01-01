@@ -19,7 +19,7 @@ export function TokenCell({ token, isFavorite, onFavoriteToggle }) {
         />
       </button>
       <div className="flex items-center gap-x-3">
-        <div className="rounded-full h-14 w-14 bg-neutral-100">
+        <div className="rounded-full w-10 h-10 md:h-14 md:w-14 bg-neutral-100">
           <img
             src={token.image}
             alt="img"

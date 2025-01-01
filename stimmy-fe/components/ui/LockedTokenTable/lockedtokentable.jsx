@@ -5,8 +5,8 @@ const LockedTokensTable = ({ tokens }) => {
     return (
         <div className=" text-white p-6 rounded-lg shadow-md overflow-x-auto">
             <table className="w-full table-auto text-left min-w-[800px]">
-                <thead>
-                    <tr className=" uppercase text-placeholderText">
+                <thead className='text-xs md:text-sm lg:text-base'>
+                    <tr className=" uppercase text-placeholderText ">
                         <th className="p-3 font-semibold">Locked Token</th>
                         <th className="p-3 font-semibold">Until Unlock</th>
                         <th className="p-3 font-semibold">Amount</th>
@@ -18,18 +18,18 @@ const LockedTokensTable = ({ tokens }) => {
                     {tokens.map((token, index) => (
                         <tr key={index} className="border-b border-bordercolor hover:bg-bordercolor/20 transition-colors bg-[#1D1D1E4D]">
                             <td className="p-3">
-                                <div className="flex flex-col">
+                                <div className="flex flex-col text-xs md:text-sm lg:text-base">
                                     <span className="font-medium">{token.name}</span>
                                     <span className="text-placeholderText text-sm truncate max-w-[200px] flex items-center gap-x-2">{token.address} <Copy size={12} /> </span>
                                 </div>
                             </td>
                             <td className="p-3">
-                                <div className="flex items-center space-x-2">
+                                <div className="flex items-center space-x-2 text-xs md:text-sm lg:text-base">
                                     <span className="flex items-center gap-x-2"><Clock size={14} /> {token.unlockDuration}</span>
                                 </div>
                             </td>
-                            <td className="p-3 font-mono">{token.amount}</td>
-                            <td className="p-3  font-medium">{token.votingPower}</td>
+                            <td className="p-3 font-mono text-xs md:text-sm lg:text-base">{token.amount}</td>
+                            <td className="p-3  font-medium text-xs md:text-sm lg:text-base">{token.votingPower}</td>
                             <td className="p-3">
                                 <div className="flex flex-wrap gap-2">
                                     {token.actions.map((action, idx) => (
@@ -38,7 +38,7 @@ const LockedTokensTable = ({ tokens }) => {
                                             className={`${action.type === 'primary'
                                                 ? 'bg-secondaryText hover:bg-secondaryText/80'
                                                 : 'bg-placeholderText hover:bg-placeholderText/60'
-                                                } px-10 py-3 rounded-md text-base font-medium transition-colors`}
+                                                } px-5 md:px-10 py-2 md:py-3 rounded-md text-xs md:text-sm lg:text-base font-medium transition-colors`}
                                             onClick={action.onClick}
                                         >
                                             {action.label}
