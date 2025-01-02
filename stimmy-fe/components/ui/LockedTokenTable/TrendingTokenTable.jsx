@@ -57,14 +57,16 @@ const TrendingTokenTable = ({ tokens, isQuickBuy }) => {
                   </span>
                 </div>
               </td>
-              <td className="p-3 font-mono text-positive text-xs md:text-sm lg:text-base ">{token.mtk_cap}</td>
-              <td className="p-1 md:p-3 font-medium text-xs md:text-sm lg:text-base ">
-                {token.liquidity}
-                <span className="text-placeholderText">
-                  {" / "} {token.liquidity}
-                </span>
+              <td className="p-1 md:p-3 font-mono text-positive text-xs md:text-sm lg:text-base ">{token.mtk_cap}</td>
+              <td className="p-0 md:p-3 font-medium text-xs md:text-sm lg:text-base  ">
+                <div className="flex  ">
+                  {token.liquidity} {" / "}
+                  <span className="text-placeholderText">
+                    {token.liquidity}
+                  </span>
+                </div>
               </td>
-              <td className="p-3  text-sm md:text-base font-mono">
+              <td className="p-3  text-xs md:text-sm lg:text-base font-mono">
                 <div className="flex flex-col items-start text-xs md:text-sm lg:text-base ">
                   <p>{token.txns}</p>
                   <span className="text-positive flex md:block">
@@ -79,7 +81,7 @@ const TrendingTokenTable = ({ tokens, isQuickBuy }) => {
               <td className="p-3 font-bold text-positive text-xs md:text-sm lg:text-base ">{token.m5}</td>
               <td className="p-3 font-bold text-positive text-xs md:text-sm lg:text-base ">{token.m30}</td>
               <td className="p-3 font-bold text-positive text-xs md:text-sm lg:text-base ">{token.m1h}</td>
-              <td className="p-3 font-bold text-positive text-xs md:text-sm lg:text-base ">
+              <td className="p-3 font-bold text-positive text-xs md:text-sm lg:text-base">
                 {token.additional_info}
               </td>
 
@@ -92,7 +94,7 @@ const TrendingTokenTable = ({ tokens, isQuickBuy }) => {
                         className={`${action.type === "primary"
                           ? "bg-secondaryText hover:bg-secondaryText/80"
                           : "bg-placeholderText hover:bg-placeholderText/60"
-                          } px-5 md:px-10 py-3 rounded-md text-base font-medium transition-colors flex items-center justify-center gap-x-2 text-xs md:text-sm lg:text-base `}
+                          } px-5 md:px-10 py-3 rounded-md  font-medium transition-colors flex items-center justify-center gap-x-2 text-xs md:text-sm lg:text-base `}
                         onClick={action.onClick}
                       >
                         <img src="/Icon.svg" alt="i" className="h-4 w-4" /> {action.label}

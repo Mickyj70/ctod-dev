@@ -43,20 +43,20 @@ export default function Page() {
           target: 200,
         },
       ].map((info) => (
-        <div className="flex items-center gap-x-2" key={info.t10}>
+        <div className="flex items-center gap-x-2 text-xs md:text-sm lg:text-base" key={info.t10}>
           <div className="flex w-full">
-            <p className="text-xs font-bold text-positive">T10:{info.t10}</p>
+            <p className=" font-bold text-positive text-xs md:text-sm lg:text-base">T10:{info.t10}</p>
           </div>
           <div className="flex w-full">
-            <p className="text-xs font-bold text-negative">DH:{info.dh}</p>
+            <p className="font-bold text-negative text-xs md:text-sm lg:text-base">DH:{info.dh}</p>
           </div>
-          <p className="flex items-center font-bold gap-x-1 text-primaryText">
+          <p className="flex items-center font-bold gap-x-1 text-primaryText text-xs md:text-sm lg:text-base">
             <span>
               <GoPerson size={12} />
             </span>
             {info.person}
           </p>
-          <p className="flex items-center font-bold gap-x-1 text-primaryText">
+          <p className="flex items-center font-bold gap-x-1 text-primaryText text-xs md:text-sm lg:text-base">
             <span>
               <BiTargetLock size={12} />
             </span>

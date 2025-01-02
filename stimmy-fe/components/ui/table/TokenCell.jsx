@@ -27,7 +27,7 @@ export function TokenCell({ token, isFavorite, onFavoriteToggle }) {
           />
         </div>
         <div className="flex flex-col gap-y-1">
-          <div className="font-bold uppercase ">{token.name}</div>
+          <div className="font-bold uppercase  text-xs md:text-sm lg:text-base ">{token.name}</div>
           <LinearProgress
             className="text-secondaryText"
             sx={{ color: "orange" }}
