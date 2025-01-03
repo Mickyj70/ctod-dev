@@ -7,7 +7,7 @@
 //   );
 // }
 
-//redirect to homepage
+//redirect to homepage which is new pairs
 import { redirect } from "next/navigation";
 
 export default function Home() {
