@@ -8,7 +8,7 @@ import { CiSearch } from "react-icons/ci";
 import { CreateTokenModal } from "../modals/createtoken";
 import { useRouter } from "next/navigation";
 import { IoIosClose } from "react-icons/io";
-import { motion } from "motion/react"
+import { motion } from "motion/react";
 
 export const Navbar = ({ amount = 120000 }) => {
   // const [isModalOpen, setIsModalOpen] = useState(false);
@@ -43,7 +43,6 @@ export const Navbar = ({ amount = 120000 }) => {
     { name: "Advance Mode", path: "/advance-mode" },
     { name: "Holdings", path: "/holdings" },
     { name: "create token", path: "/create-token" },
-
   ];
 
   const formatPrice = (price) => {
@@ -58,7 +57,6 @@ export const Navbar = ({ amount = 120000 }) => {
   const coinData = [
     { name: "BTC", price: formatPrice(100000) },
     { name: "ETH", price: formatPrice(100000) },
-
   ];
 
   const router = useRouter();
@@ -72,10 +70,10 @@ export const Navbar = ({ amount = 120000 }) => {
       <div className="h-[130px] border-b border-bordercolor">
         <div className="flex h-[95px] gap-x-4 border-b border-bordercolor items-center w-full">
           <div className="px-4 md:px-9">
-            <p className="text-xl md:text-3xl font-extrabold">stimmy</p>
+            <p className="text-xl font-extrabold md:text-3xl">stimmy</p>
           </div>
           {/* nav links */}
-          <div className="hidden lg:flex items-center h-full px-4 xl:px-6 gap-x-3 xl:gap-x-6 border-x border-bordercolor">
+          <div className="items-center hidden h-full px-4 lg:flex xl:px-6 gap-x-3 xl:gap-x-6 border-x border-bordercolor">
             {data.map((item, index) =>
               !item.isButton ? (
                 <Link href={item.path} key={index}>
@@ -98,14 +96,14 @@ export const Navbar = ({ amount = 120000 }) => {
           <div className="flex items-center justify-between flex-1 h-full">
             {/* search component */}
             <div
-              className="relative hidden md:flex items-center justify-center flex-1 w-full h-full px-3 py-2"
+              className="relative items-center justify-center flex-1 hidden w-full h-full px-3 py-2 md:flex"
               ref={searchDropdownRef}
             >
               <div
                 onClick={toggleSearchDropdown}
                 className="flex items-center w-full h-12 px-3 py-2 rounded-md cursor-pointer bg-sidebar gap-x-3"
               >
-                <img src="/search_icon.svg" alt="" className="h-5 w-5" />
+                <img src="/search_icon.svg" alt="" className="w-5 h-5" />
                 <input
                   type="text"
                   placeholder="search by token or lp contract "
@@ -125,15 +123,15 @@ export const Navbar = ({ amount = 120000 }) => {
               <div className="flex items-center gap-x-4">
                 <div
                   onClick={handleProfile}
-                  className="w-9 sm:w-12 h-9 sm:h-12 bg-white rounded-full cursor-pointer"
+                  className="bg-white rounded-full cursor-pointer w-9 sm:w-12 h-9 sm:h-12"
                 ></div>
                 <div className="flex flex-col">
-                  <p className="text-lg sm:text-xl font-bold">0x00000000</p>
+                  <p className="text-lg font-bold sm:text-xl">0x00000000</p>
                   <div className="flex flex-row w-full ">
-                    <p className="flex items-center gap-x-2 text-sm font-bold text-fadedText">
+                    <p className="flex items-center text-sm font-bold gap-x-2 text-fadedText">
                       BALANCE
                       <span>
-                        <img src="/Icon.svg" alt="" className="h-4 w-4" />
+                        <img src="/Icon.svg" alt="" className="w-4 h-4" />
                       </span>
                       <span>{formatPrice(amount)}</span>
                     </p>
@@ -148,17 +146,20 @@ export const Navbar = ({ amount = 120000 }) => {
 
               {isDropdownOpen && (
                 <div className="absolute top-[80px] right-0 w-full z-20 bg-sidebar h-screen  rounded-md shadow-md p-4">
-
                   <div className="w-full">
                     <div
-                      className="relative flex md:hidden items-center justify-center flex-1 w-full h-full border border-bordercolor py-2"
+                      className="relative flex items-center justify-center flex-1 w-full h-full py-2 border md:hidden border-bordercolor"
                       ref={searchDropdownRef}
                     >
                       <div
                         onClick={toggleSearchDropdown}
                         className="flex items-center w-full h-8 px-3 py-2 rounded-lg cursor-pointer bg-sidebar gap-x-3"
                       >
-                        <img src="/search_icon.svg" alt="" className="h-5 w-5" />
+                        <img
+                          src="/search_icon.svg"
+                          alt=""
+                          className="w-5 h-5"
+                        />
                         <input
                           type="text"
                           placeholder="search by token or lp contract "
@@ -174,23 +175,42 @@ export const Navbar = ({ amount = 120000 }) => {
                       )}
                     </div>
 
-                    {data.map((item, index) =>
-                      !item.isButton && <li key={index} className="flex items-center justify-between py-4 text-lg font-bold uppercase border-b border-bordercolor lg:hidden">
-                        <motion.div whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-                          <Link href={item.path} onClick={toggleDropdown}>
-                            {item.name}
-                          </Link>
-                        </motion.div>
-                        <ChevronRight size={30} />
-                      </li>
-                    )
-                    }
-
+                    {data.map(
+                      (item, index) =>
+                        !item.isButton && (
+                          <li
+                            key={index}
+                            className="flex items-center justify-between py-4 text-lg font-bold uppercase border-b border-bordercolor lg:hidden"
+                          >
+                            <motion.div
+                              whileHover={{ scale: 1.15 }}
+                              whileTap={{ scale: 0.95 }}
+                              transition={{
+                                type: "spring",
+                                stiffness: 400,
+                                damping: 10,
+                              }}
+                            >
+                              <Link href={item.path} onClick={toggleDropdown}>
+                                {item.name}
+                              </Link>
+                            </motion.div>
+                            <ChevronRight size={30} />
+                          </li>
+                        )
+                    )}
                   </div>
-
                   <ul className="mt-0 sm:mt-2">
                     <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor">
-                      <motion.div whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                      <motion.div
+                        whileHover={{ scale: 1.15 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 10,
+                        }}
+                      >
                         <Link href="/profile" onClick={toggleDropdown}>
                           MY ACCOUNT
                         </Link>
@@ -198,7 +218,15 @@ export const Navbar = ({ amount = 120000 }) => {
                       <ChevronRight size={30} />
                     </li>
                     <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor">
-                      <motion.div whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                      <motion.div
+                        whileHover={{ scale: 1.15 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 10,
+                        }}
+                      >
                         <Link href="/settings" onClick={toggleDropdown}>
                           Settings
                         </Link>
@@ -206,31 +234,55 @@ export const Navbar = ({ amount = 120000 }) => {
                       <ChevronRight size={30} />
                     </li>
                     <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor">
-                      <motion.div whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                      <motion.div
+                        whileHover={{ scale: 1.15 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 10,
+                        }}
+                      >
                         <Link href="/goverance" onClick={toggleDropdown}>
                           Governance
                         </Link>
                       </motion.div>
                       <ChevronRight size={30} />
                     </li>
-                    <li className="py-6 border-b border-bordercolor text-[#646470] text-lg font-bold  flex items-center justify-between uppercase">
-                      <p className="relative " >
-                        Referral Program
-                        <span className="absolute ml-2 -top-3 text-[10px] border border-[#646470] rounded-md px-1">
-                          Soon
-                        </span>
-                      </p>
+                    <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor">
+                      <motion.div
+                        whileHover={{ scale: 1.15 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 10,
+                        }}
+                      >
+                        <Link href="/referral" onClick={toggleDropdown}>
+                          REFERRAL PROGRAM
+                        </Link>
+                      </motion.div>
                       <ChevronRight size={30} />
                     </li>
                     <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor text-negative">
-                      <motion.div whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                      <motion.div
+                        whileHover={{ scale: 1.15 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 10,
+                        }}
+                      >
                         <Link href="/logout" onClick={toggleDropdown}>
                           Logout
                         </Link>
                       </motion.div>
                       <ChevronRight color="white" size={30} />
                     </li>
-                  </ul>                </div>
+                  </ul>{" "}
+                </div>
               )}
             </div>
           </div>
@@ -242,7 +294,7 @@ export const Navbar = ({ amount = 120000 }) => {
             </span>
             <span> Watching</span>
           </div>
-          <div className="sm:flex items-center gap-x-3 hidden">
+          <div className="items-center hidden sm:flex gap-x-3">
             {coinData.map((item, index) => (
               <div
                 key={index}
