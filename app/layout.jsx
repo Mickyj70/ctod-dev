@@ -2,6 +2,7 @@ import { Navbar } from "../components/ui/navbar/navbar";
 import "./globals.css";
 import BottomNavbar from "../components/ui/navbar/bottomNavbar";
 import { CustomProvider } from "rsuite";
+import WelcomePopup from "../components/WelcomePopup";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
+        <WelcomePopup />
         <Navbar />
         <div className="min-h-[calc(97vh-130px)] relative">
           <CustomProvider theme="dark">{children}</CustomProvider>
