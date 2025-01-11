@@ -8,7 +8,7 @@ export default function WelcomePopup() {
   const [isOpen, setIsOpen] = useState(true);
 
   return isOpen ? (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center text-white bg-black/50">
       <div className="relative w-full max-w-2xl p-6 rounded-lg bg-background">
         <button
           onClick={() => setIsOpen(false)}
@@ -17,14 +17,14 @@ export default function WelcomePopup() {
           <X size={24} />
         </button>
 
-        <h2 className="mb-4 text-2xl font-bold">How It Works</h2>
-        <p className="mb-6 text-sm">
+        <h2 className="mb-4 text-2xl font-bold text-white">How It Works</h2>
+        <p className="mb-6 text-sm text-white">
           Stimmy prevents rugs by making sure that all created tokens are safe.
           Each coin on pump is a fair-launch with no presale and no team
           allocation.
         </p>
 
-        <div className="mb-6 space-y-3">
+        <div className="mb-6 space-y-3 text-white">
           {[
             "When enough people buy on the bonding curve it reaches a market cap of $100k",
             "Pick a coin that you like",
@@ -35,7 +35,7 @@ export default function WelcomePopup() {
               <span className="flex items-center justify-center w-8 h-8 text-white rounded-full bg-secondaryText">
                 {index + 1}
               </span>
-              <p className="flex-1 text-sm">{text}</p>
+              <p className="flex-1 text-sm text-white">{text}</p>
             </div>
           ))}
         </div>

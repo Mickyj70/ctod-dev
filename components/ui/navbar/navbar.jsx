@@ -265,7 +265,7 @@ export const Navbar = ({ amount = 120000 }) => {
                       </motion.div>
                       <ChevronRight size={30} />
                     </li>
-                    <li className="flex items-center justify-between py-6 text-lg font-bold uppercase border-b border-bordercolor text-negative">
+                    <li className="flex items-center justify-between py-6 text-lg font-bold text-red-500 uppercase border-b border-bordercolor">
                       <motion.div
                         whileHover={{ scale: 1.15 }}
                         whileTap={{ scale: 0.95 }}
