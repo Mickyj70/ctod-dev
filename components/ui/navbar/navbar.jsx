@@ -145,7 +145,7 @@ export const Navbar = ({ amount = 120000 }) => {
               {/* Dropdown */}
 
               {isDropdownOpen && (
-                <div className="absolute top-[80px] right-0 w-full z-20 bg-sidebar h-screen  rounded-md shadow-md p-4">
+                <div className="absolute top-[80px] right-0 w-full z-20 bg-sidebar h-screen text-white  rounded-md shadow-md p-4">
                   <div className="w-full">
                     <div
                       className="relative flex items-center justify-center flex-1 w-full h-full py-2 border md:hidden border-bordercolor"

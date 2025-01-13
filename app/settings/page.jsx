@@ -24,14 +24,14 @@ export default function Settings() {
                 <input
                   type="text"
                   name="username"
-                  className="w-full p-3 border  rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
+                  className="w-full p-3 border rounded-md outline-none bg-background border-bordercolor focus:border-secondaryText"
                   placeholder="Enter your username"
                 />
               </div>
 
               <div className="flex flex-col gap-3 mb-8">
                 <p>Profile Picture</p>
-                <div className="p-6 text-center border border-bordercolor border-dashed rounded-lg">
+                <div className="p-6 text-center border border-dashed rounded-lg border-bordercolor">
                   <input
                     type="file"
                     id="fileInput"
@@ -50,7 +50,7 @@ export default function Settings() {
                       }
                     }}
                   />
-                  <div className="flex flex-col  items-center py-8 gap-2">
+                  <div className="flex flex-col items-center gap-2 py-8">
                     <CloudUpload className="w-12 h-12 text-secondaryText" />
                     <p className="text-sm text-gray-500">
                       Drop files here or browse
@@ -81,7 +81,7 @@ export default function Settings() {
         );
       case "profile":
         return (
-          <div className="flex flex-col-reverse md:flex-row gap-4 px-1 md:p-4">
+          <div className="flex flex-col-reverse gap-4 px-1 md:flex-row md:p-4">
             {/* Left side - Form */}
             <form
               className="w-full md:w-8/12 mb-[90px] border border-bordercolor"
@@ -116,12 +116,14 @@ export default function Settings() {
                     <p>Fast</p>
                     <button
                       onClick={() => setMavProtection(!mavProtection)}
-                      className={`w-12 h-6 rounded-full p-1 transition-colors ${mavProtection ? "bg-secondaryText" : "bg-gray-600"
-                        }`}
+                      className={`w-12 h-6 rounded-full p-1 transition-colors ${
+                        mavProtection ? "bg-secondaryText" : "bg-gray-600"
+                      }`}
                     >
                       <div
-                        className={`w-4 h-4 rounded-full bg-white transition-transform ${mavProtection ? "translate-x-6" : "translate-x-0"
-                          }`}
+                        className={`w-4 h-4 rounded-full bg-white transition-transform ${
+                          mavProtection ? "translate-x-6" : "translate-x-0"
+                        }`}
                       />
                     </button>
                     <p>Secure</p>
@@ -207,7 +209,7 @@ export default function Settings() {
             </form>
 
             {/* Right side - Preview */}
-            <div className="w-full md:w-1/3 h-full">
+            <div className="w-full h-full md:w-1/3">
               <div className="border border-bordercolor">
                 <div className="flex flex-col gap-2 px-5 py-7">
                   <h2 className="text-xl font-bold">WHAT IS SLIPPAGE?</h2>
@@ -262,28 +264,31 @@ export default function Settings() {
           <div className="flex gap-4 pb-4 ">
             <button
               onClick={() => setActiveForm("general")}
-              className={`px-4 py-2 rounded-lg transition-colors ${activeForm === "general"
-                ? "bg-orange-500 text-white"
-                : "bg-transparent hover:bg-orange-500 border border-bordercolor"
-                }`}
+              className={`px-4 py-2 rounded-lg transition-colors ${
+                activeForm === "general"
+                  ? "bg-secondaryText text-white"
+                  : "bg-transparent hover:bg-secondaryText border border-bordercolor"
+              }`}
             >
               PROFILE
             </button>
             <button
               onClick={() => setActiveForm("profile")}
-              className={`px-4 py-2 rounded-lg transition-colors ${activeForm === "profile"
-                ? "bg-orange-500 text-white "
-                : "bg-transparent hover:bg-orange-500 border border-bordercolor"
-                }`}
+              className={`px-4 py-2 rounded-lg transition-colors ${
+                activeForm === "profile"
+                  ? "bg-orange-500 text-white "
+                  : "bg-transparent hover:bg-orange-500 border border-bordercolor"
+              }`}
             >
               QUICK BUY
             </button>
             <button
               onClick={() => setActiveForm("security")}
-              className={`px-4 py-2 rounded-lg transition-colors ${activeForm === "security"
-                ? "bg-orange-500 text-white"
-                : "bg-transparent hover:bg-orange-500 border border-bordercolor"
-                }`}
+              className={`px-4 py-2 rounded-lg transition-colors ${
+                activeForm === "security"
+                  ? "bg-orange-500 text-white"
+                  : "bg-transparent hover:bg-orange-500 border border-bordercolor"
+              }`}
             >
               QUICK SELL
             </button>
