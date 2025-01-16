@@ -276,8 +276,8 @@ export default function Settings() {
               onClick={() => setActiveForm("profile")}
               className={`px-4 py-2 rounded-lg transition-colors ${
                 activeForm === "profile"
-                  ? "bg-orange-500 text-white "
-                  : "bg-transparent hover:bg-orange-500 border border-bordercolor"
+                  ? " text-white "
+                  : "bg-transparent hover:bg-secondaryText border border-bordercolor"
               }`}
             >
               QUICK BUY
@@ -286,8 +286,8 @@ export default function Settings() {
               onClick={() => setActiveForm("security")}
               className={`px-4 py-2 rounded-lg transition-colors ${
                 activeForm === "security"
-                  ? "bg-orange-500 text-white"
-                  : "bg-transparent hover:bg-orange-500 border border-bordercolor"
+                  ? "bg-secondaryText text-white"
+                  : "bg-transparent hover:bg-secondaryText border border-bordercolor"
               }`}
             >
               QUICK SELL
